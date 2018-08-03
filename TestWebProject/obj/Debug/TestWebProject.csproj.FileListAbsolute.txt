@@ -1,0 +1,62 @@
+c:\users\uladzimir_nilau@epam.com\documents\visual studio 2015\Projects\TestWebProject\TestWebProject\bin\Debug\TestWebProject.dll
+c:\users\uladzimir_nilau@epam.com\documents\visual studio 2015\Projects\TestWebProject\TestWebProject\bin\Debug\TestWebProject.pdb
+c:\users\uladzimir_nilau@epam.com\documents\visual studio 2015\Projects\TestWebProject\TestWebProject\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+c:\users\uladzimir_nilau@epam.com\documents\visual studio 2015\Projects\TestWebProject\TestWebProject\bin\Debug\WebDriver.dll
+c:\users\uladzimir_nilau@epam.com\documents\visual studio 2015\Projects\TestWebProject\TestWebProject\bin\Debug\WebDriver.xml
+c:\users\uladzimir_nilau@epam.com\documents\visual studio 2015\Projects\TestWebProject\TestWebProject\obj\Debug\TestWebProject.csprojResolveAssemblyReference.cache
+c:\users\uladzimir_nilau@epam.com\documents\visual studio 2015\Projects\TestWebProject\TestWebProject\obj\Debug\TestWebProject.dll
+c:\users\uladzimir_nilau@epam.com\documents\visual studio 2015\Projects\TestWebProject\TestWebProject\obj\Debug\TestWebProject.pdb
+c:\users\uladzimir_nilau@epam.com\documents\visual studio 2015\Projects\TestWebProject\TestWebProject\bin\Debug\WebDriver.Support.dll
+c:\users\uladzimir_nilau@epam.com\documents\visual studio 2015\Projects\TestWebProject\TestWebProject\bin\Debug\WebDriver.Support.xml
+c:\users\uladzimir_nilau@epam.com\documents\visual studio 2015\Projects\TestWebProject\TestWebProject\bin\Debug\TestWebProject.dll.config
+C:\Users\Polina\Downloads\TestWebProject\TestWebProject\obj\Debug\TestWebProject.csproj.CoreCompileInputs.cache
+C:\Users\Polina\Downloads\TestWebProject\TestWebProject\bin\Debug\TestWebProject.dll.config
+C:\Users\Polina\Downloads\TestWebProject\TestWebProject\bin\Debug\TestWebProject.dll
+C:\Users\Polina\Downloads\TestWebProject\TestWebProject\bin\Debug\TestWebProject.pdb
+C:\Users\Polina\Downloads\TestWebProject\TestWebProject\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\Polina\Downloads\TestWebProject\TestWebProject\bin\Debug\WebDriver.dll
+C:\Users\Polina\Downloads\TestWebProject\TestWebProject\bin\Debug\WebDriver.Support.dll
+C:\Users\Polina\Downloads\TestWebProject\TestWebProject\bin\Debug\WebDriver.xml
+C:\Users\Polina\Downloads\TestWebProject\TestWebProject\bin\Debug\WebDriver.Support.xml
+C:\Users\Polina\Downloads\TestWebProject\TestWebProject\obj\Debug\TestWebProject.csproj.CopyComplete
+C:\Users\Polina\Downloads\TestWebProject\TestWebProject\obj\Debug\TestWebProject.dll
+C:\Users\Polina\Downloads\TestWebProject\TestWebProject\obj\Debug\TestWebProject.pdb
+C:\Users\Polina\Downloads\TestWebProject\TestWebProject\obj\Debug\TestWebProject.csprojAssemblyReference.cache
+D:\data\WebProject-master\WebProject-master\TestWebProject\bin\Debug\TestWebProject.dll.config
+D:\data\WebProject-master\WebProject-master\TestWebProject\bin\Debug\TestWebProject.dll
+D:\data\WebProject-master\WebProject-master\TestWebProject\bin\Debug\TestWebProject.pdb
+D:\data\WebProject-master\WebProject-master\TestWebProject\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+D:\data\WebProject-master\WebProject-master\TestWebProject\bin\Debug\WebDriver.dll
+D:\data\WebProject-master\WebProject-master\TestWebProject\bin\Debug\WebDriver.Support.dll
+D:\data\WebProject-master\WebProject-master\TestWebProject\bin\Debug\WebDriver.xml
+D:\data\WebProject-master\WebProject-master\TestWebProject\bin\Debug\WebDriver.Support.xml
+D:\data\WebProject-master\WebProject-master\TestWebProject\obj\Debug\TestWebProject.csprojAssemblyReference.cache
+D:\data\WebProject-master\WebProject-master\TestWebProject\obj\Debug\TestWebProject.csproj.CoreCompileInputs.cache
+D:\data\WebProject-master\WebProject-master\TestWebProject\obj\Debug\TestWebProject.csproj.CopyComplete
+D:\data\WebProject-master\WebProject-master\TestWebProject\obj\Debug\TestWebProject.dll
+D:\data\WebProject-master\WebProject-master\TestWebProject\obj\Debug\TestWebProject.pdb
+D:\data\TestWebProject\TestWebProject\bin\Debug\TestWebProject.dll.config
+D:\data\TestWebProject\TestWebProject\bin\Debug\TestWebProject.dll
+D:\data\TestWebProject\TestWebProject\bin\Debug\TestWebProject.pdb
+D:\data\TestWebProject\TestWebProject\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+D:\data\TestWebProject\TestWebProject\bin\Debug\WebDriver.dll
+D:\data\TestWebProject\TestWebProject\bin\Debug\WebDriver.Support.dll
+D:\data\TestWebProject\TestWebProject\bin\Debug\WebDriver.xml
+D:\data\TestWebProject\TestWebProject\bin\Debug\WebDriver.Support.xml
+D:\data\TestWebProject\TestWebProject\obj\Debug\TestWebProject.csprojAssemblyReference.cache
+D:\data\TestWebProject\TestWebProject\obj\Debug\TestWebProject.csproj.CoreCompileInputs.cache
+D:\data\TestWebProject\TestWebProject\obj\Debug\TestWebProject.csproj.CopyComplete
+D:\data\TestWebProject\TestWebProject\obj\Debug\TestWebProject.dll
+D:\data\TestWebProject\TestWebProject\obj\Debug\TestWebProject.pdb
+D:\data\WebProject\TestWebProject\bin\Debug\TestWebProject.dll.config
+D:\data\WebProject\TestWebProject\bin\Debug\TestWebProject.dll
+D:\data\WebProject\TestWebProject\bin\Debug\TestWebProject.pdb
+D:\data\WebProject\TestWebProject\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+D:\data\WebProject\TestWebProject\bin\Debug\WebDriver.dll
+D:\data\WebProject\TestWebProject\bin\Debug\WebDriver.Support.dll
+D:\data\WebProject\TestWebProject\bin\Debug\WebDriver.xml
+D:\data\WebProject\TestWebProject\bin\Debug\WebDriver.Support.xml
+D:\data\WebProject\TestWebProject\obj\Debug\TestWebProject.csproj.CoreCompileInputs.cache
+D:\data\WebProject\TestWebProject\obj\Debug\TestWebProject.csproj.CopyComplete
+D:\data\WebProject\TestWebProject\obj\Debug\TestWebProject.dll
+D:\data\WebProject\TestWebProject\obj\Debug\TestWebProject.pdb
