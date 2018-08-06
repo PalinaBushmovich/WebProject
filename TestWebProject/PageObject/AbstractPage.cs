@@ -7,12 +7,7 @@ namespace TestWebProject.PageObject
 {
     public abstract class AbstractPage
     {
-  
-        public void WaitTillElementIsVisible(By locator, int timeoutInSeconds = 5)
-        {
-            new WebDriverWait(Browser.GetDriver(), TimeSpan.FromSeconds(timeoutInSeconds)).Until(ExpectedConditions.ElementIsVisible(locator));
-        }
-
+        
         public void DeleteEmail()
         {
 
@@ -26,11 +21,9 @@ namespace TestWebProject.PageObject
             js.ExecuteScript("arguments[0].style.backgroundColor = '" + "yellow" + "'", askQuestionElement);
         }
 
-        public bool IsElementDisplayed(IWebElement element)
-        {          
-            return element.Displayed;
+       
 
-        }
+        
 
     }
 }

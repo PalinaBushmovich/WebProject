@@ -29,8 +29,10 @@ namespace TestWebProject
 
             //Log in as first user
             MainEmailBoxPage _mainEmailBoxPage = _homePage.LogInToEmailBox(Constants.Sender, Constants.Password);
-       
+
             //Verify that login is successful
+            _navigationPanel = new MainNavigationPanel();
+
             bool isFirstLoginSuccessfull = _navigationPanel.InboxLink.Displayed;
             Assert.IsTrue(isFirstLoginSuccessfull, $"Login of first user '{Constants.Sender}' was not successful");
 
@@ -40,17 +42,19 @@ namespace TestWebProject
             //Verify that email is in sent mail box 
             _navigationPanel.SentMailLink.Click();
 
-            bool isEmailInSentBox = _sentMailPage.RecipientName.Displayed;
+            _sentMailPage = new SentMailPage();
+
+            bool isEmailInSentBox = _sentMailPage.RecipientName.IsElementDisplayed();
             Assert.IsTrue(isEmailInSentBox, "Email was not sent and is not resent in Sent Mail box");
 
             _mainEmailBoxPage.ReLogin(Constants.Recipient, Constants.Password);
 
             //Verify that login is successful
-            bool isSecondLoginSuccessfull = _navigationPanel.InboxLink.Displayed;
+            bool isSecondLoginSuccessfull = _navigationPanel.InboxLink.IsElementDisplayed();
             Assert.IsTrue(isSecondLoginSuccessfull, $"Login of second user '{Constants.Recipient}' was not successful");
 
             //Verify that email is in Inbox 
-            bool isEmailInInbox = _sentMailPage.SenderName.Displayed;
+            bool isEmailInInbox = _sentMailPage.SenderName.IsElementDisplayed();
             Assert.IsTrue(isEmailInInbox, $"Email is not displayed in Inbox");
 
             //Drag&drop email to trash
@@ -61,7 +65,7 @@ namespace TestWebProject
 
             TrashPage trashPage = new TrashPage();
 
-            bool isEmailInTrash = trashPage.SenderName.Displayed;
+            bool isEmailInTrash = trashPage.SenderName.IsElementDisplayed();
             Assert.IsTrue(isEmailInInbox, $"Email is not displayed in Trash");
 
         }

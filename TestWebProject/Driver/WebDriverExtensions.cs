@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
+using System.Threading;
 
 namespace TestWebProject.Driver
 {
@@ -48,6 +49,29 @@ namespace TestWebProject.Driver
             IJavaScriptExecutor executor = (IJavaScriptExecutor)Browser.GetDriver();
             executor.ExecuteScript("arguments[0].click();", driver.FindElement(locator));
 
+        }
+
+        public static bool WaitWhileVisible(this IWebElement element, int waitingTime)
+        {
+            {
+                System.Threading.Thread.Sleep(2000);
+
+                while (waitingTime > 0)
+                {
+                    if (element.Displayed)
+                        return true;
+                    System.Threading.Thread.Sleep(1000);
+                    waitingTime -= 1000;
+                }
+                return false;
+            }
+
+        }
+
+        public static bool IsElementDisplayed(this IWebElement element)
+        {
+            element.WaitWhileVisible(6000);
+            return element.Displayed;
         }
     }
 }

@@ -33,18 +33,18 @@ namespace TestWebProject.PageObject
             LogInForm logInForm = new LogInForm();
 
             //Enter credentials 
-            logInForm.WaitTillElementIsVisible(_loginInputBy);
+            logInForm.LogInInput.WaitWhileVisible(3000);
             logInForm.LogInInput.SendKeys(email);
             logInForm.NextEmailButton.Click();
 
-            logInForm.WaitTillElementIsVisible(_passwordInputBy);
+            logInForm.PasswordInput.WaitWhileVisible(3000);
             logInForm.PasswordInput.HighlightElement(_passwordInputBy);
             logInForm.PasswordInput.SendKeys(password);
             logInForm.NextPasswordButton.Click();
 
             //Wait till main mail box page is loaded 
             MainEmailBoxPage mainEmailBoxPage = new MainEmailBoxPage();
-            mainEmailBoxPage.WaitTillElementIsVisible(_composeButtonBy);
+            mainEmailBoxPage.ComposeButton.WaitWhileVisible(3000);
 
             return new MainEmailBoxPage();
         }

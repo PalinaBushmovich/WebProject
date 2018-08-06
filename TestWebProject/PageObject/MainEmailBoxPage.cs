@@ -40,12 +40,12 @@ namespace TestWebProject.PageObject
         {
             MainEmailBoxPage mainPage = new MainEmailBoxPage();
 
-            mainPage.WaitTillElementIsVisible(_composeButtonXPath);          
+            mainPage.ComposeButton.WaitWhileVisible(3000);          
             mainPage.ComposeButton.Click();
 
             EmailForm emailForm = new EmailForm();
 
-            emailForm.WaitTillElementIsVisible(_sendFormXPath);
+            emailForm.SendForm.WaitWhileVisible(3000);
             Browser.GetDriver().SwitchTo().ActiveElement();
              
             emailForm.ToField.SendKeys(recipient);
@@ -68,15 +68,15 @@ namespace TestWebProject.PageObject
 
             //Log in 
             logInForm.ChangeUserButton.Click();
-            logInForm.WaitTillElementIsVisible(_useAnotherAccountXPath);
+            logInForm.UseAnotherAccountButton.WaitWhileVisible(3000);
             logInForm.UseAnotherAccountButton.Click();
-            logInForm.WaitTillElementIsVisible(_logInInputXPath);
+            logInForm.LogInInput.WaitWhileVisible(3000);
             logInForm.LogInInput.SendKeys(login);
             logInForm.NextEmailButton.Click();
-            logInForm.WaitTillElementIsVisible(_passwordInputXPath);
+            logInForm.PasswordInput.WaitWhileVisible(3000);
             logInForm.PasswordInput.SendKeys(password);
             logInForm.NextPasswordButton.Click();
-            mainPage.WaitTillElementIsVisible(_composeButtonXPath);          
+            mainPage.ComposeButton.WaitWhileVisible(3000);          
         }
 
         public void DeleteEmail(string sender)
