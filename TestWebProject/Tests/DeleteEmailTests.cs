@@ -10,7 +10,7 @@ using TestWebProject.PageObject;
 namespace TestWebProject.Tests
 {
     [TestClass]
-    public class ArchiveEmailTests : BaseTest
+    public class DeleteEmailTests : BaseTest
     {
         private HomePage _homePage;
         private MainNavigationPanel _navigationPanel;
@@ -26,10 +26,14 @@ namespace TestWebProject.Tests
         }
 
         [TestMethod, TestCategory("Email"), TestCategory("Archive")]
-        public void LogInSendEmail_ArhiveViaRightMouseClick()
+        public void LogInSendEmail_DeleteViaRightMouseClick()
         {
+            _homePage = new HomePage();
+
             //Log in as first user
-            _mainEmailBoxPage = _homePage.LogInToEmailBox(Constants.Sender, Constants.Password);
+            MainEmailBoxPage _mainEmailBoxPage = _homePage.LogInToEmailBox(Constants.Sender, Constants.Password);
+
+            _navigationPanel = new MainNavigationPanel();
 
             //Verify that login is successful
             bool isFirstLoginSuccessfull = _navigationPanel.InboxLink.Displayed;
@@ -38,14 +42,13 @@ namespace TestWebProject.Tests
             //Write and send an email
             _mainEmailBoxPage.SendEmail(Constants.Recipient, Constants.Message);
 
-            _mainEmailBoxPage.ReLogin(Constants.Recipient, Constants.Password);
+            _sentMailPage = new SentMailPage();
 
-            //Verify that login is successful
-            bool isSecondLoginSuccessfull = _navigationPanel.InboxLink.Displayed;
-            Assert.IsTrue(isSecondLoginSuccessfull, $"Login of second user '{Constants.Recipient}' was not successful");
+            _navigationPanel.SentMailLink.Click();
 
             //Send the email to archive
-            _mainEmailBoxPage.MoveEmailToArchive(Constants.Sender);
+            _mainEmailBoxPage.DeleteEmailViaRightClick(Constants.RecipientName);
+
         }
 
     }

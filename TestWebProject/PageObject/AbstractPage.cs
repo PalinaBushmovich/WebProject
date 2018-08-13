@@ -20,10 +20,7 @@ namespace TestWebProject.PageObject
             IWebElement askQuestionElement = driver.FindElement(locator);
             js.ExecuteScript("arguments[0].style.backgroundColor = '" + "yellow" + "'", askQuestionElement);
         }
-
-       
-
-        
+    
 
     }
 }

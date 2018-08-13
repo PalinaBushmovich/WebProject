@@ -13,5 +13,7 @@ namespace TestWebProject.Driver
         public const string Recipient = "dxvcdescfsdc@gmail.com";
         public const string Message = "hello world!";
         public const string SenderName = "Eduard Tumas";
+        public const string RecipientName = "dxvcdescfsdc";
+
     }
 }

@@ -13,7 +13,9 @@ namespace TestWebProject.PageObject
         private static readonly By _logInInputXPath = By.CssSelector("input[type = 'Email']");
         private static readonly By _passwordInputXPath = By.CssSelector("input[type = 'password']");
         private static readonly By _useAnotherAccountXPath = By.XPath("//div[p='Use another account']");
-        private string _emailNameXPath = "  //span[contains(@name,'{0}')]";
+        private string _emailNameXPath = "//span[contains(@name,'{0}')]";
+
+        private string _deleteRowXPath = "//span[contains(@name,'{0}')]";
 
         public MainEmailBoxPage()
         {
@@ -93,15 +95,15 @@ namespace TestWebProject.PageObject
             Action.DragAndDrop(emailTitle, navigationPanel.TrashButton).Build().Perform();
         }
 
-        public void MoveEmailToArchive(string sender)
+        public void DeleteEmailViaRightClick(string sender)
         {
-            MainEmailBoxPage mainPage = new MainEmailBoxPage();
+            SentMailPage sendEmailPage = new SentMailPage();
 
             string emailName = String.Format(_emailNameXPath, sender);
             IWebElement emailTitle = Browser.GetDriver().FindElement(By.XPath(emailName));
             MainNavigationPanel navigationPanel = new MainNavigationPanel();
 
-            navigationPanel.MoreButton.Click();
+            navigationPanel.SentMailLink.Click();
 
             Actions Action = new Actions(Browser.GetDriver());
 
@@ -109,6 +111,8 @@ namespace TestWebProject.PageObject
 
             RightClickAction.Build().Perform();
 
+            sendEmailPage.DeleteICon.Click();
+       
         }
     }
 }
