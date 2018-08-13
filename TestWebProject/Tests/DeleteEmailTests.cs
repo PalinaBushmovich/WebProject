@@ -25,7 +25,7 @@ namespace TestWebProject.Tests
             Browser.NavigateTo(Configurations.StartUrl);
         }
 
-        [TestMethod, TestCategory("Email"), TestCategory("Archive")]
+        [TestMethod, TestCategory("Email")]
         public void LogInSendEmail_DeleteViaRightMouseClick()
         {
             _homePage = new HomePage();
@@ -42,12 +42,10 @@ namespace TestWebProject.Tests
             //Write and send an email
             _mainEmailBoxPage.SendEmail(Constants.Recipient, Constants.Message);
 
-            _sentMailPage = new SentMailPage();
+            _mainEmailBoxPage.ReLogin(Constants.Recipient, Constants.Password);
 
-            _navigationPanel.SentMailLink.Click();
-
-            //Send the email to archive
-            _mainEmailBoxPage.DeleteEmailViaRightClick(Constants.RecipientName);
+            //Delete an email
+            _mainEmailBoxPage.DeleteEmailViaRightClick(Constants.SenderName);
 
         }
 

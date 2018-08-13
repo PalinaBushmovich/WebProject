@@ -53,15 +53,23 @@ namespace TestWebProject.Driver
 
         public static bool WaitWhileVisible(this IWebElement element, int waitingTime)
         {
-            {
-                System.Threading.Thread.Sleep(2000);
-
+            {         
                 while (waitingTime > 0)
                 {
-                    if (element.Displayed)
+                    System.Threading.Thread.Sleep(2000);
+
+                    if (element.Displayed == false)
+                    {
+                        System.Threading.Thread.Sleep(1000);
+                        waitingTime -= 1000;
+                       
+                    }
+                    else
+                    {
                         return true;
-                    System.Threading.Thread.Sleep(1000);
-                    waitingTime -= 1000;
+
+                    }  
+                
                 }
                 return false;
             }

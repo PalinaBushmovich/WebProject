@@ -38,6 +38,9 @@ namespace TestWebProject.PageObject
         [FindsBy(How = How.XPath, Using = "//a[text()='Sign out']")]
         public IWebElement SignOutButton { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "//div[contains(@role, 'menuitem')]//div[contains(text(),'Delete')]")]
+        public IWebElement DeleteICon { get; set; }
+
         public void SendEmail(string recipient, string message)
         {
             MainEmailBoxPage mainPage = new MainEmailBoxPage();
@@ -53,6 +56,7 @@ namespace TestWebProject.PageObject
             emailForm.ToField.SendKeys(recipient);
             emailForm.ToField.SendKeys(Keys.Enter);
             emailForm.MessageArea.SendKeys(message);
+            emailForm.MessageArea.SendKeys(Keys.Enter);
             emailForm.SendButton.Click();
         }
 
@@ -97,13 +101,9 @@ namespace TestWebProject.PageObject
 
         public void DeleteEmailViaRightClick(string sender)
         {
-            SentMailPage sendEmailPage = new SentMailPage();
-
             string emailName = String.Format(_emailNameXPath, sender);
             IWebElement emailTitle = Browser.GetDriver().FindElement(By.XPath(emailName));
             MainNavigationPanel navigationPanel = new MainNavigationPanel();
-
-            navigationPanel.SentMailLink.Click();
 
             Actions Action = new Actions(Browser.GetDriver());
 
@@ -111,7 +111,7 @@ namespace TestWebProject.PageObject
 
             RightClickAction.Build().Perform();
 
-            sendEmailPage.DeleteICon.Click();
+            DeleteICon.Click();
        
         }
     }

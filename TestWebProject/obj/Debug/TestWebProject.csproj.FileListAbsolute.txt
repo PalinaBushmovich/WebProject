@@ -6,7 +6,6 @@ D:\data\WebProject\TestWebProject\bin\Debug\WebDriver.dll
 D:\data\WebProject\TestWebProject\bin\Debug\WebDriver.Support.dll
 D:\data\WebProject\TestWebProject\bin\Debug\WebDriver.xml
 D:\data\WebProject\TestWebProject\bin\Debug\WebDriver.Support.xml
-D:\data\WebProject\TestWebProject\obj\Debug\TestWebProject.csprojAssemblyReference.cache
 D:\data\WebProject\TestWebProject\obj\Debug\TestWebProject.csproj.CoreCompileInputs.cache
 D:\data\WebProject\TestWebProject\obj\Debug\TestWebProject.csproj.CopyComplete
 D:\data\WebProject\TestWebProject\obj\Debug\TestWebProject.dll

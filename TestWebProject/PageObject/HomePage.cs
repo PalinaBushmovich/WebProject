@@ -1,7 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using TestWebProject.Driver;
- 
+
 
 namespace TestWebProject.PageObject
 {
@@ -17,7 +17,7 @@ namespace TestWebProject.PageObject
             IWebDriver driver = Browser.GetDriver();
             PageFactory.InitElements(driver, this);
         }
-    
+
         [FindsBy(How = How.CssSelector, Using = "input[type ='email']")]
         public IWebElement LogInInput { get; set; }
         [FindsBy(How = How.CssSelector, Using = ".gmail-nav__nav-link__sign-in")]
@@ -41,6 +41,9 @@ namespace TestWebProject.PageObject
             logInForm.PasswordInput.HighlightElement(_passwordInputBy);
             logInForm.PasswordInput.SendKeys(password);
             logInForm.NextPasswordButton.Click();
+
+            IWebDriver driver = Browser.GetDriver();
+            driver.Wait(6, 3);
 
             //Wait till main mail box page is loaded 
             MainEmailBoxPage mainEmailBoxPage = new MainEmailBoxPage();

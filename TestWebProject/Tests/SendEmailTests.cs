@@ -22,7 +22,7 @@ namespace TestWebProject
             Browser.NavigateTo(Configurations.StartUrl);
         }
 
-        [TestMethod, TestCategory("Email"), TestCategory("Delete")]
+        [TestMethod, TestCategory("Email")]
         public void LogInSendEmailLogOut_LogInChechThatEmailIsSent()
         {
             _homePage = new HomePage();

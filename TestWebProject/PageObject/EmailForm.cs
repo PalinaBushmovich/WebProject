@@ -24,5 +24,10 @@ namespace TestWebProject.PageObject
 
         [FindsBy(How = How.XPath, Using = "//div[contains(text(),'Send')]")]
         public IWebElement SendButton { get; set; }
+
+        [FindsBy(How = How.XPath, Using = " //input[contains(@name,'subjectbox')]")]
+        public IWebElement SubjectInput { get; set; }
+
+       
     }
 }

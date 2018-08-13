@@ -19,10 +19,6 @@ namespace TestWebProject.PageObject
         [FindsBy(How = How.XPath, Using = "//span[@name = 'Eduard Tumas']/../..")]
         public IWebElement SenderName { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//div[contains(@role, 'menuitem')]//div[contains(text(),'Delete')]")]
-        public IWebElement DeleteICon { get; set; }
-        
-
         public void DeleteEmail()
         {
             SentMailPage sentMailPage = new SentMailPage();
