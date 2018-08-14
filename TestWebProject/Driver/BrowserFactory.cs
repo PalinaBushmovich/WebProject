@@ -46,10 +46,12 @@ namespace TestWebProject.Driver
                     }
                 case BrowserType.RemoteFirefox:
                     {
-                        var cability = DesiredCapabilities.Firefox();
-                        cability.SetCapability(CapabilityType.BrowserName, "firefox");
-                        cability.SetCapability(CapabilityType.Platform, new Platform(PlatformType.Any));
-                        driver = new RemoteWebDriver(new Uri("http://localhost:5566/wd/hub"), cability);
+                        var cability = new FirefoxOptions();
+                        driver = new RemoteWebDriver(new Uri("http://localhost:5566/wd/hub"), cability.ToCapabilities());
+                        break;
+                       // cability.SetCapability(CapabilityType.BrowserName, "firefox");
+                        //cability.SetCapability(CapabilityType.Platform, new Platform(PlatformType.Any));
+                        //driver = new RemoteWebDriver(new Uri("http://localhost:5566/wd/hub"), cability);
                         break;
                     }
                 case BrowserType.RemoteChrome:

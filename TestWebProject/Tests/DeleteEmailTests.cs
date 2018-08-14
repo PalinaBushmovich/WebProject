@@ -16,6 +16,7 @@ namespace TestWebProject.Tests
         private MainNavigationPanel _navigationPanel;
         private MainEmailBoxPage _mainEmailBoxPage;
         private SentMailPage _sentMailPage;
+        private LogInForm _logInform;
 
         [ClassInitialize()]
         public static void SendEmailTestsInitialize(TestContext context)
@@ -30,8 +31,10 @@ namespace TestWebProject.Tests
         {
             _homePage = new HomePage();
 
+           _logInform =  _homePage.OpenLoginForm();
+
             //Log in as first user
-            MainEmailBoxPage _mainEmailBoxPage = _homePage.LogInToEmailBox(Constants.Sender, Constants.Password);
+            _mainEmailBoxPage = _logInform.LogInToEmailBox(Constants.Sender, Constants.Password);
 
             _navigationPanel = new MainNavigationPanel();
 
@@ -42,12 +45,13 @@ namespace TestWebProject.Tests
             //Write and send an email
             _mainEmailBoxPage.SendEmail(Constants.Recipient, Constants.Message);
 
-            _mainEmailBoxPage.ReLogin(Constants.Recipient, Constants.Password);
+            _logInform = _mainEmailBoxPage.SignOut();
+
+            _logInform.LogInToEmailBox(Constants.Recipient, Constants.Password);
 
             //Delete an email
             _mainEmailBoxPage.DeleteEmailViaRightClick(Constants.SenderName);
 
         }
-
     }
 }

@@ -13,6 +13,7 @@ namespace TestWebProject.PageObject
         private static readonly By _logInInputXPath = By.CssSelector("input[type = 'Email']");
         private static readonly By _passwordInputXPath = By.CssSelector("input[type = 'password']");
         private static readonly By _useAnotherAccountXPath = By.XPath("//div[p='Use another account']");
+        private static readonly By _signOutButtonBy = By.XPath("//a[text()='Sign out']");
         private string _emailNameXPath = "//span[contains(@name,'{0}')]";
 
         private string _deleteRowXPath = "//span[contains(@name,'{0}')]";
@@ -45,14 +46,14 @@ namespace TestWebProject.PageObject
         {
             MainEmailBoxPage mainPage = new MainEmailBoxPage();
 
-            mainPage.ComposeButton.WaitWhileVisible(3000);          
+            mainPage.ComposeButton.WaitWhileVisible(3000);
             mainPage.ComposeButton.Click();
 
             EmailForm emailForm = new EmailForm();
 
             emailForm.SendForm.WaitWhileVisible(3000);
             Browser.GetDriver().SwitchTo().ActiveElement();
-             
+
             emailForm.ToField.SendKeys(recipient);
             emailForm.ToField.SendKeys(Keys.Enter);
             emailForm.MessageArea.SendKeys(message);
@@ -60,29 +61,18 @@ namespace TestWebProject.PageObject
             emailForm.SendButton.Click();
         }
 
-        public void ReLogin(string login, string password)
+        public LogInForm SignOut()
         {
             IWebDriver driver = Browser.GetDriver();
 
-            //Log out
-
             MainEmailBoxPage mainPage = new MainEmailBoxPage();
             mainPage.LinkToAccountPopUp.Click();
+            mainPage.WaitTillElementIsVisible(_signOutButtonBy);
             mainPage.SignOutButton.Click();
 
             LogInForm logInForm = new LogInForm();
 
-            //Log in 
-            logInForm.ChangeUserButton.Click();
-            logInForm.UseAnotherAccountButton.WaitWhileVisible(3000);
-            logInForm.UseAnotherAccountButton.Click();
-            logInForm.LogInInput.WaitWhileVisible(3000);
-            logInForm.LogInInput.SendKeys(login);
-            logInForm.NextEmailButton.Click();
-            logInForm.PasswordInput.WaitWhileVisible(3000);
-            logInForm.PasswordInput.SendKeys(password);
-            logInForm.NextPasswordButton.Click();
-            mainPage.ComposeButton.WaitWhileVisible(3000);          
+            return logInForm;
         }
 
         public void DeleteEmail(string sender)
@@ -112,7 +102,7 @@ namespace TestWebProject.PageObject
             RightClickAction.Build().Perform();
 
             DeleteICon.Click();
-       
+
         }
     }
 }

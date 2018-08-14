@@ -13,6 +13,7 @@ namespace TestWebProject
         private MainNavigationPanel _navigationPanel;
         private MainEmailBoxPage _mainEmailBoxPage;
         private SentMailPage _sentMailPage;
+        private LogInForm _logInform;
 
         [ClassInitialize()]
         public static void SendEmailTestsInitialize(TestContext context)
@@ -27,8 +28,10 @@ namespace TestWebProject
         {
             _homePage = new HomePage();
 
+            _logInform = _homePage.OpenLoginForm();
+
             //Log in as first user
-            MainEmailBoxPage _mainEmailBoxPage = _homePage.LogInToEmailBox(Constants.Sender, Constants.Password);
+            _logInform.LogInToEmailBox(Constants.Sender, Constants.Password);
 
             //Verify that login is successful
             _navigationPanel = new MainNavigationPanel();
@@ -47,7 +50,9 @@ namespace TestWebProject
             bool isEmailInSentBox = _sentMailPage.RecipientName.IsElementDisplayed();
             Assert.IsTrue(isEmailInSentBox, "Email was not sent and is not resent in Sent Mail box");
 
-            _mainEmailBoxPage.ReLogin(Constants.Recipient, Constants.Password);
+            _logInform = _mainEmailBoxPage.SignOut();
+
+            _logInform.LogInToEmailBox(Constants.Recipient, Constants.Password);
 
             //Verify that login is successful
             bool isSecondLoginSuccessfull = _navigationPanel.InboxLink.IsElementDisplayed();

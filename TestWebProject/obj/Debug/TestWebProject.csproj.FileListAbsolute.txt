@@ -10,3 +10,4 @@ D:\data\WebProject\TestWebProject\obj\Debug\TestWebProject.csproj.CoreCompileInp
 D:\data\WebProject\TestWebProject\obj\Debug\TestWebProject.csproj.CopyComplete
 D:\data\WebProject\TestWebProject\obj\Debug\TestWebProject.dll
 D:\data\WebProject\TestWebProject\obj\Debug\TestWebProject.pdb
+D:\data\WebProject\TestWebProject\obj\Debug\TestWebProject.csprojAssemblyReference.cache
