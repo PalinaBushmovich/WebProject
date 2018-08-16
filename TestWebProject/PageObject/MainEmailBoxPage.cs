@@ -8,7 +8,7 @@ namespace TestWebProject.PageObject
 {
     public class MainEmailBoxPage : AbstractPage
     {
-        private static readonly By _composeButtonXPath = By.XPath("//div[contains(text(),'COMPOSE')]");
+        private static readonly By _composeButtonXPath = By.XPath("//div[contains(text(),'Compose')]");
         private static readonly By _sendFormXPath = By.XPath("//td/form");
         private static readonly By _logInInputXPath = By.CssSelector("input[type = 'Email']");
         private static readonly By _passwordInputXPath = By.CssSelector("input[type = 'password']");

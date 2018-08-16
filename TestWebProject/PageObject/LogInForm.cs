@@ -7,12 +7,13 @@ namespace TestWebProject.PageObject
 {
     public class LogInForm : AbstractPage
     {
-  
+
         private static readonly By _passwordInputBy = By.CssSelector("input[type = 'password']");
         private static readonly By _loginInputBy = By.CssSelector("input[type ='email']");
-        private static readonly By _composeButtonBy = By.XPath("//div[contains(text(),'COMPOSE')]");
-        private static readonly By _useAnatherAccountBy = By.XPath("//div[p='Use another account']");
-
+        private static readonly By _composeButtonBy = By.XPath("//div[contains(text(),'Compose')]");
+        private static readonly By _useAnotherAccountBy = By.XPath("//div[p='Use another account']");
+        private static readonly By _logInForm = By.XPath("//*[@id='initialView']/div[contains(@role,'presentation')]");
+        private static readonly By _changeUserButton = By.XPath("//*[@id='profileIdentifier']");
 
         [FindsBy(How = How.CssSelector, Using = "input[type ='email']")]
         public IWebElement LogInInput { get; set; }
@@ -40,20 +41,18 @@ namespace TestWebProject.PageObject
             HomePage homePage = new HomePage();
             IWebDriver driver = Browser.GetDriver();
             driver.Manage();
-          
+
             LogInForm logInForm = new LogInForm();
 
-            if (Configurations.Browser == "IExplorer")
+            WaitTillElementIsVisible(_logInForm);
+          
+          if (driver.IsElementDisplayed(_changeUserButton))
             {
-                if (UseAnotherAccountButton.Displayed)
-                {
-                    logInForm.UseAnotherAccountButton.Click();
-                }
-                else
-                {
-                    ChangeUserButton.Click();
-                }
-                            
+                ChangeUserButton.Click();
+            }
+            if (driver.IsElementDisplayed(_useAnotherAccountBy))
+            {
+                logInForm.UseAnotherAccountButton.Click();
             }
 
             //Enter credentials 

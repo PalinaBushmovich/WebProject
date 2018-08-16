@@ -18,7 +18,7 @@ namespace TestWebProject.Driver
 
         public static string PageTimeout => GetEnvinromentVar("PageTimeout", "10");
 
-        public static string Browser => GetEnvinromentVar("BrowserType", "IExplorer");
+        public static string Browser => GetEnvinromentVar("BrowserType", "Chrome");
 
         public static string StartUrl => GetEnvinromentVar("StartUrl", "https://www.google.com/intl/en/gmail/about/#");
     }

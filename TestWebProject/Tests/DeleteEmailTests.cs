@@ -31,7 +31,7 @@ namespace TestWebProject.Tests
         {
             _homePage = new HomePage();
 
-           _logInform =  _homePage.OpenLoginForm();
+            _logInform = _homePage.OpenLoginForm();
 
             //Log in as first user
             _mainEmailBoxPage = _logInform.LogInToEmailBox(Constants.Sender, Constants.Password);

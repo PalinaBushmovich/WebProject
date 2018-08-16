@@ -76,10 +76,18 @@ namespace TestWebProject.Driver
 
         }
 
-        public static bool IsElementDisplayed(this IWebElement element)
+        public static bool IsElementDisplayed(this IWebDriver Driver, By by, int timeoutInSeconds = 5)
         {
-            element.WaitWhileVisible(6000);
-            return element.Displayed;
+            // Wait for element to be displayed
+            try
+            {
+                Wait(Driver, timeoutInSeconds).Until(d => d.FindElements(by).Count > 0 && d.FindElement(by).Displayed);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

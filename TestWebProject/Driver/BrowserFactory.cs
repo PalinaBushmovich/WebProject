@@ -47,11 +47,10 @@ namespace TestWebProject.Driver
                 case BrowserType.RemoteFirefox:
                     {
                         var cability = new FirefoxOptions();
-                        driver = new RemoteWebDriver(new Uri("http://localhost:5566/wd/hub"), cability.ToCapabilities());
-                        break;
-                       // cability.SetCapability(CapabilityType.BrowserName, "firefox");
-                        //cability.SetCapability(CapabilityType.Platform, new Platform(PlatformType.Any));
-                        //driver = new RemoteWebDriver(new Uri("http://localhost:5566/wd/hub"), cability);
+                        
+                        //cability.ToCapabilities(CapabilityType.BrowserName, "firefox");
+                       // cability.SetCapability(CapabilityType.Platform, new Platform(PlatformType.Any));
+                        driver = new RemoteWebDriver(new Uri("http://localhost:5566/wd/hub"), cability);
                         break;
                     }
                 case BrowserType.RemoteChrome:
@@ -59,7 +58,7 @@ namespace TestWebProject.Driver
                         var option = new ChromeOptions();
                         option.AddArgument("disable-infobars");
                         option.AddArgument("--no-sandbox");
-                        driver = new RemoteWebDriver(new Uri("http://localhost:5566/wd/hub"), option.ToCapabilities());
+                        driver = new RemoteWebDriver(new Uri("http://localhost:4444/wd/hub"), option.ToCapabilities());
                         break;
                     }
                 case BrowserType.IExplorer:

@@ -27,10 +27,12 @@ namespace TestWebProject.PageObject
             js.ExecuteScript("arguments[0].style.backgroundColor = '" + "yellow" + "'", askQuestionElement);
         }
     
-        public void WaitTillElementIsVisible(By locator, int timeOut = 6)
+        public void WaitTillElementIsVisible(By locator, int timeOut = 10)
         {
             IWebDriver driver = Browser.GetDriver();
             new WebDriverWait(driver, TimeSpan.FromSeconds(timeOut)).Until(ExpectedConditions.ElementExists((locator)));
         }
+
+        
     }
 }

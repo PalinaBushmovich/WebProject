@@ -23,6 +23,7 @@ namespace TestWebProject.PageObject
         public LogInForm OpenLoginForm()
         {
             //Click Sign in button
+            WaitTillElementIsVisible(_signInButtonBy);
             SignInButton.JSclick(_signInButtonBy);
 
             return new LogInForm();
