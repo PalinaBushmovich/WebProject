@@ -15,12 +15,5 @@ namespace TestWebProject.PageObject
 
         [FindsBy(How = How.XPath, Using = "//div[data-tooltip='Delete']")]
         public IWebElement DeleteButton { get; set; }
-
-        public void DeleteEmail()
-        {
-            Browser.GetDriver().SwitchTo().ParentFrame();
-            EmailContentPage emailContentPage = new EmailContentPage();
-            emailContentPage.DeleteButton.Click();
-        }
     }
 }

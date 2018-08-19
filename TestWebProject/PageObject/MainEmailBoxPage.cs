@@ -2,13 +2,14 @@
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.PageObjects;
 using System;
+using System.Threading;
 using TestWebProject.Driver;
 
 namespace TestWebProject.PageObject
 {
     public class MainEmailBoxPage : AbstractPage
     {
-        private static readonly By _composeButtonXPath = By.XPath("//div[contains(text(),'Compose')]");
+        private static readonly By _composeButtonXPath = By.XPath("//div[contains(text(),'COMPOSE')]");
         private static readonly By _sendFormXPath = By.XPath("//td/form");
         private static readonly By _logInInputXPath = By.CssSelector("input[type = 'Email']");
         private static readonly By _passwordInputXPath = By.CssSelector("input[type = 'password']");
@@ -46,18 +47,19 @@ namespace TestWebProject.PageObject
         {
             MainEmailBoxPage mainPage = new MainEmailBoxPage();
 
-            mainPage.ComposeButton.WaitWhileVisible(3000);
+            mainPage.WaitTillElementIsVisible(_composeButtonXPath);
             mainPage.ComposeButton.Click();
 
             EmailForm emailForm = new EmailForm();
 
-            emailForm.SendForm.WaitWhileVisible(3000);
+            emailForm.WaitTillElementIsVisible(_sendFormXPath);
             Browser.GetDriver().SwitchTo().ActiveElement();
 
             emailForm.ToField.SendKeys(recipient);
             emailForm.ToField.SendKeys(Keys.Enter);
             emailForm.MessageArea.SendKeys(message);
             emailForm.MessageArea.SendKeys(Keys.Enter);
+            Thread.Sleep(2000);
             emailForm.SendButton.Click();
         }
 

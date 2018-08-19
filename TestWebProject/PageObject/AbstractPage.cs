@@ -8,11 +8,6 @@ namespace TestWebProject.PageObject
 {
     public abstract class AbstractPage
     {
-        public AbstractPage()
-        {
-            IWebDriver _driver = Browser.GetDriver();
-            PageFactory.InitElements(_driver, this);
-        }
 
         public void DeleteEmail()
         {

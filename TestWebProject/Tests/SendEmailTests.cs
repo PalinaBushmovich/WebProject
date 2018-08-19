@@ -8,8 +8,6 @@ namespace TestWebProject
     [TestClass]
     public class SendEmailTests : BaseTest
     {
-
-        private HomePage _homePage;
         private MainNavigationPanel _navigationPanel;
         private MainEmailBoxPage _mainEmailBoxPage;
         private SentMailPage _sentMailPage;
@@ -26,7 +24,7 @@ namespace TestWebProject
         [TestMethod, TestCategory("Email")]
         public void LogInSendEmailLogOut_LogInChechThatEmailIsSent()
         {
-            _homePage = new HomePage();
+            IHomePage _homePage = new HomePageDecorator(new HomePage());
 
             _logInform = _homePage.OpenLoginForm();
 
@@ -47,20 +45,20 @@ namespace TestWebProject
 
             _sentMailPage = new SentMailPage();
 
-            //bool isEmailInSentBox = _sentMailPage.RecipientName.IsElementDisplayed();
-            //Assert.IsTrue(isEmailInSentBox, "Email was not sent and is not resent in Sent Mail box");
+            bool isEmailInSentBox = _sentMailPage.RecipientName.Displayed;
+            Assert.IsTrue(isEmailInSentBox, "Email was not sent and is not resent in Sent Mail box");
 
             _logInform = _mainEmailBoxPage.SignOut();
 
             _logInform.LogInToEmailBox(Constants.Recipient, Constants.Password);
 
             //Verify that login is successful
-            //bool isSecondLoginSuccessfull = _navigationPanel.InboxLink.IsElementDisplayed();
-            //Assert.IsTrue(isSecondLoginSuccessfull, $"Login of second user '{Constants.Recipient}' was not successful");
+            bool isSecondLoginSuccessfull = _navigationPanel.InboxLink.Displayed;
+           Assert.IsTrue(isSecondLoginSuccessfull, $"Login of second user '{Constants.Recipient}' was not successful");
 
             //Verify that email is in Inbox 
-           // bool isEmailInInbox = _sentMailPage.SenderName.IsElementDisplayed();
-            //Assert.IsTrue(isEmailInInbox, $"Email is not displayed in Inbox");
+            bool isEmailInInbox = _sentMailPage.SenderName.Displayed;
+            Assert.IsTrue(isEmailInInbox, $"Email is not displayed in Inbox");
 
             //Drag&drop email to trash
             _mainEmailBoxPage.DeleteEmail(Constants.SenderName);
@@ -70,10 +68,8 @@ namespace TestWebProject
 
             TrashPage trashPage = new TrashPage();
 
-            //bool isEmailInTrash = trashPage.SenderName.IsElementDisplayed();
-            //Assert.IsTrue(isEmailInInbox, $"Email is not displayed in Trash");
-
+            bool isEmailInTrash = trashPage.SenderName.Displayed;
+            Assert.IsTrue(isEmailInInbox, $"Email is not displayed in Trash");
         }
-
     }
 }

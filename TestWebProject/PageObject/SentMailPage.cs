@@ -19,16 +19,5 @@ namespace TestWebProject.PageObject
         [FindsBy(How = How.XPath, Using = "//span[@name = 'Eduard Tumas']/../..")]
         public IWebElement SenderName { get; set; }
 
-        public void DeleteEmail()
-        {
-            SentMailPage sentMailPage = new SentMailPage();
-
-            sentMailPage.SenderName.Click();
-            Browser.GetDriver().SwitchTo().ParentFrame();
-
-            EmailContentPage emailContentPage = new EmailContentPage();
-            emailContentPage.DeleteButton.Click();
-        }
-
     }
 }

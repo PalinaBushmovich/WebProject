@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OpenQA.Selenium;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,5 @@ namespace TestWebProject.Driver
         public const string Message = "hello world!";
         public const string SenderName = "Eduard Tumas";
         public const string RecipientName = "dxvcdescfsdc";
-
     }
 }

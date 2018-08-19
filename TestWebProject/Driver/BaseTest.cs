@@ -20,6 +20,5 @@ namespace TestWebProject.Driver
         {
             Browser.Quit();
         }
-
     }
 }

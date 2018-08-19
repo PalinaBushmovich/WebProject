@@ -51,31 +51,6 @@ namespace TestWebProject.Driver
 
         }
 
-        public static bool WaitWhileVisible(this IWebElement element, int waitingTime)
-        {
-            {         
-                while (waitingTime > 0)
-                {
-                    System.Threading.Thread.Sleep(2000);
-
-                    if (element.Displayed == false)
-                    {
-                        System.Threading.Thread.Sleep(1000);
-                        waitingTime -= 1000;
-                       
-                    }
-                    else
-                    {
-                        return true;
-
-                    }  
-                
-                }
-                return false;
-            }
-
-        }
-
         public static bool IsElementDisplayed(this IWebDriver Driver, By by, int timeoutInSeconds = 5)
         {
             // Wait for element to be displayed
