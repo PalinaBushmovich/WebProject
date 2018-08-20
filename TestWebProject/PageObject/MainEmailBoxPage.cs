@@ -3,13 +3,16 @@ using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.PageObjects;
 using System;
 using System.Threading;
-using TestWebProject.Driver;
+using SeleneTestWebProject.Driver;
+using NSelene;
 
-namespace TestWebProject.PageObject
+namespace SeleneTestWebProject.PageObject
 {
     public class MainEmailBoxPage : AbstractPage
     {
-        private static readonly By _composeButtonXPath = By.XPath("//div[contains(text(),'COMPOSE')]");
+       private SeleneDriver _seleneDriver;
+
+        private static readonly By _composeButtonXPath = By.XPath("//div[contains(text(),'Compose')]");
         private static readonly By _sendFormXPath = By.XPath("//td/form");
         private static readonly By _logInInputXPath = By.CssSelector("input[type = 'Email']");
         private static readonly By _passwordInputXPath = By.CssSelector("input[type = 'password']");
@@ -21,14 +24,15 @@ namespace TestWebProject.PageObject
 
         public MainEmailBoxPage()
         {
-            IWebDriver driver = Browser.GetDriver();
-            PageFactory.InitElements(driver, this);
+            IWebDriver driver = Driver.Browser.GetDriver();
+            _seleneDriver = new SeleneDriver(driver);
+            PageFactory.InitElements(_seleneDriver, this);
         }
 
         [FindsBy(How = How.XPath, Using = "//a[text()='Sign In']")]
         public IWebElement SignInButton { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//div[contains(text(),'COMPOSE')]")]
+        [FindsBy(How = How.XPath, Using = "//div[contains(text(),'Compose')]")]
         public IWebElement ComposeButton { get; set; }
 
         [FindsBy(How = How.XPath, Using = "//div[@aria-label='Delete']")]
@@ -45,31 +49,39 @@ namespace TestWebProject.PageObject
 
         public void SendEmail(string recipient, string message)
         {
+            IWebDriver driver = Driver.Browser.GetDriver();
+            _seleneDriver = new SeleneDriver(driver);
+
             MainEmailBoxPage mainPage = new MainEmailBoxPage();
 
-            mainPage.WaitTillElementIsVisible(_composeButtonXPath);
+            _seleneDriver.Find(ComposeButton).Should(Be.Visible);
+
             mainPage.ComposeButton.Click();
 
             EmailForm emailForm = new EmailForm();
 
-            emailForm.WaitTillElementIsVisible(_sendFormXPath);
-            Browser.GetDriver().SwitchTo().ActiveElement();
+            _seleneDriver.Find(emailForm.SendForm).Should(Be.Visible);
+
+            _seleneDriver.SwitchTo().ActiveElement();
 
             emailForm.ToField.SendKeys(recipient);
             emailForm.ToField.SendKeys(Keys.Enter);
             emailForm.MessageArea.SendKeys(message);
             emailForm.MessageArea.SendKeys(Keys.Enter);
-            Thread.Sleep(2000);
+
+            _seleneDriver.Find(emailForm.MessageArea).ShouldNot(Be.Blank);
             emailForm.SendButton.Click();
         }
 
         public LogInForm SignOut()
         {
-            IWebDriver driver = Browser.GetDriver();
+            IWebDriver driver = Driver.Browser.GetDriver();
+            _seleneDriver = new SeleneDriver(driver);
 
             MainEmailBoxPage mainPage = new MainEmailBoxPage();
             mainPage.LinkToAccountPopUp.Click();
-            mainPage.WaitTillElementIsVisible(_signOutButtonBy);
+
+            _seleneDriver.Find(SignOutButton).Should(Be.Visible);
             mainPage.SignOutButton.Click();
 
             LogInForm logInForm = new LogInForm();
@@ -82,24 +94,24 @@ namespace TestWebProject.PageObject
             MainEmailBoxPage mainPage = new MainEmailBoxPage();
 
             string emailName = String.Format(_emailNameXPath, sender);
-            IWebElement emailTitle = Browser.GetDriver().FindElement(By.XPath(emailName));
+            IWebElement emailTitle = Driver.Browser.GetDriver().FindElement(By.XPath(emailName));
             MainNavigationPanel navigationPanel = new MainNavigationPanel();
 
             navigationPanel.MoreButton.Click();
 
-            Actions Action = new Actions(Browser.GetDriver());
+            Actions Action = new Actions(Driver.Browser.GetDriver());
             Action.DragAndDrop(emailTitle, navigationPanel.TrashButton).Build().Perform();
         }
 
         public void DeleteEmailViaRightClick(string sender)
         {
             string emailName = String.Format(_emailNameXPath, sender);
-            IWebElement emailTitle = Browser.GetDriver().FindElement(By.XPath(emailName));
+            IWebElement emailTitle = Driver.Browser.GetDriver().FindElement(By.XPath(emailName));
             MainNavigationPanel navigationPanel = new MainNavigationPanel();
 
-            Actions Action = new Actions(Browser.GetDriver());
+            Actions Action = new Actions(Driver.Browser.GetDriver());
 
-            Actions RightClickAction = new Actions(Browser.GetDriver()).ContextClick(emailTitle);
+            Actions RightClickAction = new Actions(Driver.Browser.GetDriver()).ContextClick(emailTitle);
 
             RightClickAction.Build().Perform();
 

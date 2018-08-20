@@ -36,6 +36,9 @@
       <HintPath>..\packages\HtmlElements.3.0.1\lib\net40\HtmlElements.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="NSelene, Version=0.0.0.7, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NSelene.0.0.0.7\lib\net45\NSelene.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -63,16 +66,13 @@
     <Compile Include="PageObject\AbstractPage.cs" />
     <Compile Include="PageObject\EmailContentPage.cs" />
     <Compile Include="PageObject\EmailForm.cs" />
-    <Compile Include="PageObject\Decorator\HomePage.cs" />
-    <Compile Include="PageObject\Decorator\HomePageDecorator.cs" />
-    <Compile Include="PageObject\Decorator\IHomePage.cs" />
+    <Compile Include="PageObject\HomePage.cs" />
     <Compile Include="PageObject\LogInForm.cs" />
     <Compile Include="PageObject\MainEmailBoxPage.cs" />
     <Compile Include="PageObject\MainNavigationPanel.cs" />
     <Compile Include="PageObject\SentMailPage.cs" />
     <Compile Include="PageObject\TrashPage.cs" />
     <Compile Include="Tests\DeleteEmailTests.cs" />
-    <Compile Include="Tests\MultipleUsersLogIn.cs" />
     <Compile Include="Tests\SendEmailTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -86,11 +86,6 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup />
-  <ItemGroup>
-    <Content Include="Data\LogInData.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

@@ -1,16 +1,18 @@
-﻿using OpenQA.Selenium;
+﻿using NSelene;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using System;
-using TestWebProject.Driver;
+using SeleneTestWebProject.Driver;
 
-namespace TestWebProject.PageObject
+namespace SeleneTestWebProject.PageObject
 {
     public class EmailContentPage : AbstractPage
     {
         public EmailContentPage()
         {
-            IWebDriver driver = Browser.GetDriver();
-            PageFactory.InitElements(driver, this);
+            IWebDriver driver = Driver.Browser.GetDriver();
+            SeleneDriver seleneDriver = new SeleneDriver(driver);
+            PageFactory.InitElements(seleneDriver, this);
         }
 
         [FindsBy(How = How.XPath, Using = "//div[data-tooltip='Delete']")]

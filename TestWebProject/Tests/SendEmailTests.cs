@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
-using TestWebProject.Driver;
-using TestWebProject.PageObject;
+using SeleneTestWebProject.Driver;
+using SeleneTestWebProject.PageObject;
 
 namespace TestWebProject
 {
@@ -12,6 +12,7 @@ namespace TestWebProject
         private MainEmailBoxPage _mainEmailBoxPage;
         private SentMailPage _sentMailPage;
         private LogInForm _logInform;
+        private HomePage _homePage;
 
         [ClassInitialize()]
         public static void SendEmailTestsInitialize(TestContext context)
@@ -24,7 +25,7 @@ namespace TestWebProject
         [TestMethod, TestCategory("Email")]
         public void LogInSendEmailLogOut_LogInChechThatEmailIsSent()
         {
-            IHomePage _homePage = new HomePageDecorator(new HomePage());
+           // IHomePage _homePage = new HomePageDecorator(new HomePage());
 
             _logInform = _homePage.OpenLoginForm();
 

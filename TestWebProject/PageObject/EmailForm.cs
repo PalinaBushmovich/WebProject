@@ -1,16 +1,18 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
-using TestWebProject.Driver;
+using SeleneTestWebProject.Driver;
+using NSelene;
 
-namespace TestWebProject.PageObject
+namespace SeleneTestWebProject.PageObject
 {
     public class EmailForm : AbstractPage
     {
 
         public EmailForm()
         {
-            IWebDriver driver = Browser.GetDriver();
-            PageFactory.InitElements(driver, this);
+            IWebDriver driver = Driver.Browser.GetDriver();
+            SeleneDriver seleneDriver = new SeleneDriver(driver);
+            PageFactory.InitElements(seleneDriver, this);
         }
 
         [FindsBy(How = How.XPath, Using = "//td/form")]

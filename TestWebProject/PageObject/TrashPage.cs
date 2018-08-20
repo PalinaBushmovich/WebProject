@@ -5,16 +5,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TestWebProject.Driver;
+using SeleneTestWebProject.Driver;
+using NSelene;
 
-namespace TestWebProject.PageObject
+namespace SeleneTestWebProject.PageObject
 {
     public class TrashPage : AbstractPage
     {
         public TrashPage()
         {
-            IWebDriver driver = Browser.GetDriver();
-            PageFactory.InitElements(driver, this);
+            IWebDriver driver = Driver.Browser.GetDriver();
+            SeleneDriver seleneDriver = new SeleneDriver(driver);
+            PageFactory.InitElements(seleneDriver, this);
         }
 
         [FindsBy(How = How.XPath, Using = "//span[@name = 'Eduard Tumas']/../..")]

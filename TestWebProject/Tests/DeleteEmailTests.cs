@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TestWebProject.Driver;
-using TestWebProject.PageObject;
+using SeleneTestWebProject.Driver;
+using SeleneTestWebProject.PageObject;
 
 namespace TestWebProject.Tests
 {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace TestWebProject.Driver
+namespace SeleneTestWebProject.Driver
 {
     [TestClass]
     public class BaseTest

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System;
 using System.Diagnostics;
 
-namespace TestWebProject.Driver
+namespace SeleneTestWebProject.Driver
 {
     public class Browser
     {
