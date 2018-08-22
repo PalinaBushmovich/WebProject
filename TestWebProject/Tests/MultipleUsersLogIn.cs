@@ -25,7 +25,7 @@ namespace TestWebProject.Tests
         }
        
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.XML", "LogInData.xml", "Credentials", DataAccessMethod.Sequential)]
-        [DeploymentItem("Data")]
+        [DeploymentItem("@Data")]
         public void LogIn_VerifySuccessfulLogIn()
         {
             #region set variables

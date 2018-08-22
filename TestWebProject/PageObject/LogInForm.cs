@@ -73,9 +73,7 @@ namespace TestWebProject.PageObject
             logInForm.NextPasswordButton.Click();
 
             //Wait till main mail box page is loaded 
-            MainEmailBoxPage mainEmailBoxPage = new MainEmailBoxPage();
-
-       
+            MainEmailBoxPage mainEmailBoxPage = new MainEmailBoxPage();   
 
             mainEmailBoxPage.WaitTillElementIsVisible(_composeButtonBy);
 

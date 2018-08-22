@@ -8,7 +8,6 @@ namespace TestWebProject.PageObject
 {
     public abstract class AbstractPage
     {
-
         public void DeleteEmail()
         {
 
@@ -26,8 +25,6 @@ namespace TestWebProject.PageObject
         {
             IWebDriver driver = Browser.GetDriver();
             new WebDriverWait(driver, TimeSpan.FromSeconds(timeOut)).Until(ExpectedConditions.ElementExists((locator)));
-        }
-
-        
+        }       
     }
 }

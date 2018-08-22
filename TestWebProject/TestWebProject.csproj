@@ -60,11 +60,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BDD\SpecFlowTest.feature.cs">
+    <Compile Include="BDD\BaseTestForSpecflow.cs" />
+    <Compile Include="BDD\SentEmailTest.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SpecFlowTest.feature</DependentUpon>
+      <DependentUpon>SentEmailTest.feature</DependentUpon>
     </Compile>
+    <Compile Include="BDD\SentEmailTestSteps.cs" />
     <Compile Include="Driver\BaseTest.cs" />
     <Compile Include="Driver\Browser.cs" />
     <Compile Include="Driver\BrowserFactory.cs" />
@@ -91,9 +93,9 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="BDD\SpecFlowTest.feature">
+    <None Include="BDD\SentEmailTest.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>SpecFlowTest.feature.cs</LastGenOutput>
+      <LastGenOutput>SentEmailTest.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
   </ItemGroup>

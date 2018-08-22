@@ -2,7 +2,6 @@
 
 namespace TestWebProject.Driver
 {
-    [TestClass]
     public class BaseTest
     {
        public static Browser Browser = Browser.Instance;
