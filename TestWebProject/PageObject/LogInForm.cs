@@ -41,6 +41,9 @@ namespace TestWebProject.PageObject
 
         [FindsBy(How = How.XPath, Using = "//*[@id='profileIdentifier']")]
         public IWebElement ChangeUserButton { get; set; }
+      
+        [FindsBy(How = How.XPath, Using = "//div[@data-value = 'ru']")]
+        public IWebElement RussianLanguageSelected { get; set; }
 
         public MainEmailBoxPage LogInToEmailBox(string email, string password)
         {
@@ -65,11 +68,10 @@ namespace TestWebProject.PageObject
             logInForm.WaitTillElementIsVisible(_loginInputBy);
             logInForm.LogInInput.SendKeys(email);
             logInForm.NextEmailButton.Click();
-
-            Thread.Sleep(3000);
+            Thread.Sleep(2000);
             logInForm.WaitTillElementIsVisible(_passwordInputBy);
-            logInForm.PasswordInput.HighlightElement(_passwordInputBy);
             logInForm.PasswordInput.SendKeys(password);
+            logInForm.PasswordInput.HighlightElement(_passwordInputBy);          
             logInForm.NextPasswordButton.Click();
 
             //Wait till main mail box page is loaded 

@@ -65,8 +65,6 @@ namespace TestWebProject.PageObject
 
         public LogInForm SignOut()
         {
-            IWebDriver driver = Browser.GetDriver();
-
             MainEmailBoxPage mainPage = new MainEmailBoxPage();
             mainPage.LinkToAccountPopUp.Click();
             mainPage.WaitTillElementIsVisible(_signOutButtonBy);

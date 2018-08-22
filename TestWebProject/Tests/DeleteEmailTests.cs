@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,9 @@ namespace TestWebProject.Tests
         public void LogInSendEmail_DeleteViaRightMouseClick()
         {
             _homePage = new HomePage();
+
+            IWebDriver driver = Browser.GetDriver();
+            driver.Manage();
 
             _logInform = _homePage.OpenLoginForm();
 

@@ -69,7 +69,7 @@ namespace TestWebProject
             TrashPage trashPage = new TrashPage();
 
             bool isEmailInTrash = trashPage.SenderName.Displayed;
-            Assert.IsTrue(isEmailInInbox, $"Email is not displayed in Trash");
+            Assert.IsTrue(isEmailInTrash, $"Email is not displayed in Trash");
         }
     }
 }
