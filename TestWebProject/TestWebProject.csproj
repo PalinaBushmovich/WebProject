@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Json.NET.Web, Version=1.0.49.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Json.NET.Web.1.0.49\lib\portable45-net45+win8+wpa81\Json.NET.Web.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -67,6 +70,8 @@
       <DependentUpon>EmailTests.feature</DependentUpon>
     </Compile>
     <Compile Include="BDD\EmailTestSteps.cs" />
+    <Compile Include="BDD\JsonItems.cs" />
+    <Compile Include="BDD\LoadJson.cs" />
     <Compile Include="Driver\BaseTest.cs" />
     <Compile Include="Driver\Browser.cs" />
     <Compile Include="Driver\BrowserFactory.cs" />
@@ -93,6 +98,7 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="BDD\Data.json" />
     <None Include="BDD\EmailTests.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>EmailTests.feature.cs</LastGenOutput>
