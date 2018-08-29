@@ -31,3 +31,5 @@ C:\WebProject\TestWebProject\obj\Debug\TestWebProject.csproj.CoreCompileInputs.c
 C:\WebProject\TestWebProject\obj\Debug\TestWebProject.csproj.CopyComplete
 C:\WebProject\TestWebProject\obj\Debug\TestWebProject.dll
 C:\WebProject\TestWebProject\obj\Debug\TestWebProject.pdb
+C:\WebProject\TestWebProject\obj\Debug\TestWebProject.csprojAssemblyReference.cache
+C:\WebProject\TestWebProject\bin\Debug\Json.NET.Web.dll
