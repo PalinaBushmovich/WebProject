@@ -13,28 +13,6 @@ namespace TestWebProject.REST
 
         private static Dictionary<string, string> headers = new Dictionary<string, string> { { "Authorization", "Basic Y2xlcmtmdWxsOlRob21zb24hMA==" } };
 
-        public static HttpWebRequest ExecutePostRequest(string Url, string json)
-        {
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Url);
-            request.Method = "POST";
-            request.ContentType = "application/json";
-            foreach (var header in headers)
-            {
-                request.Headers.Add(header.Key, header.Value);
-            }
-            using (var streamWriter = new StreamWriter(request.GetRequestStream()))
-            {
-                streamWriter.Write(json);
-            }
-
-            return request;
-        }
-
-        internal static string GetResponseHeader(object p, object headerName)
-        {
-            throw new NotImplementedException();
-        }
-
         public static HttpWebRequest ExecuteGetRequest(string Url)
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Url);

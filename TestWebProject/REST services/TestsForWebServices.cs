@@ -12,20 +12,33 @@ namespace TestWebProject.REST
     [TestClass]
     public class TestsForWebServices
     {
-        private string Url = "https://jsonplaceholder.typicode.com/users";
+        private string _url = "https://jsonplaceholder.typicode.com/users";
 
         [TestMethod]
         public void VerifyResponceStatusCode()
         {
-            HttpStatusCode responceCode = HTTPrequests.GetResponseStatusCode(HTTPrequests.ExecuteGetRequest(Url));
-
+            HttpStatusCode responceCode = HTTPrequests.GetResponseStatusCode(HTTPrequests.ExecuteGetRequest(_url));
+            Assert.AreEqual(Convert.ToString(responceCode), "OK");
         }
+
         [TestMethod]
-        public void SendPostUserRequest()
+        public void VerifyResultCountHeader()
         {
-            string userRequest = JsonSerialization.SerializeToJson(new UserGETdto());
-            HttpStatusCode statusCode = HTTPrequests.GetResponseStatusCode(HTTPrequests.ExecutePostRequest(Url, userRequest));
-            
+            string headerName = "Authorization";
+            string contentType = "ContentType";
+            string headerValue = HTTPrequests.GetResponseHeader(HTTPrequests.ExecuteGetRequest(_url), headerName);
+            string contentTypeValue = HTTPrequests.GetResponseHeader(HTTPrequests.ExecuteGetRequest(_url), contentType);
+            Assert.IsTrue(Convert.ToInt32(headerValue) >= 0);
+        }
+
+        [TestMethod]
+        public void VerifyBodyOfGetRequest()
+        {
+            UserGetDTO userGetRequest = new UserGetDTO();
+            string userGetRequestJson = JsonSerialization.SerializeToJson(userGetRequest);         
+            string body = HTTPrequests.GetResponseBody(HTTPrequests.ExecuteGetRequest(_url));
+            UserGetDTO caseGetResponse = JsonSerialization.DeserializeFromJson<UserGetDTO>(body);
+          
         }
     }
 }

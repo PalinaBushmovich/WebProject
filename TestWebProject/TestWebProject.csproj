@@ -92,7 +92,8 @@
     <Compile Include="PageObject\TrashPage.cs" />
     <Compile Include="REST services\HTTPRequests.cs" />
     <Compile Include="REST services\JsonSerialization.cs" />
-    <Compile Include="REST services\REST dto\UserDTO.cs" />
+    <Compile Include="REST services\REST dto\UserGetDTO.cs" />
+    <Compile Include="REST services\RestComparator.cs" />
     <Compile Include="REST services\TestsForWebServices.cs" />
     <Compile Include="Tests\DeleteEmailTests.cs" />
     <Compile Include="Tests\MultipleUsersLogIn.cs" />
