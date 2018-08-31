@@ -12,6 +12,8 @@ namespace TestWebProject.BDD.DeleteEmail
         public void GivenILoginWithTheFollowingCredentials(Table table)
         {
             var user = new User(table.Rows[0][0], table.Rows[0][1]);
+            ScenarioContext.Current.Add("Username", user);
+            ScenarioContext.Current.Add("Password", user);
             HomePage _homePage = new HomePage();
             LogInForm _logInform = _homePage.OpenLoginForm();
             _logInform.LogInToEmailBox(user.Username, user.Password);
