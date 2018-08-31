@@ -65,14 +65,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BDD\BaseTestForSpecflow.cs" />
-    <Compile Include="BDD\EmailTests.feature.cs">
+    <Compile Include="BDD\DeleteEmail\DeleteEmail.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>EmailTests.feature</DependentUpon>
+      <DependentUpon>DeleteEmail.feature</DependentUpon>
     </Compile>
-    <Compile Include="BDD\EmailTestSteps.cs" />
-    <Compile Include="BDD\JsonItems.cs" />
-    <Compile Include="BDD\LoadJson.cs" />
+    <Compile Include="BDD\DeleteEmail\DeleteEmailSteps.cs" />
+    <Compile Include="BDD\SendEmail\SendEmailTests.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SendEmailTests.feature</DependentUpon>
+    </Compile>
+    <Compile Include="BDD\SendEmail\SendEmailTestSteps.cs" />
+    <Compile Include="Business Object\User.cs" />
     <Compile Include="Driver\BaseTest.cs" />
     <Compile Include="Driver\Browser.cs" />
     <Compile Include="Driver\BrowserFactory.cs" />
@@ -93,7 +98,6 @@
     <Compile Include="REST services\HTTPRequests.cs" />
     <Compile Include="REST services\JsonSerialization.cs" />
     <Compile Include="REST services\REST dto\UserGetDTO.cs" />
-    <Compile Include="REST services\RestComparator.cs" />
     <Compile Include="REST services\TestsForWebServices.cs" />
     <Compile Include="Tests\DeleteEmailTests.cs" />
     <Compile Include="Tests\MultipleUsersLogIn.cs" />
@@ -104,10 +108,13 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="BDD\Data.json" />
-    <None Include="BDD\EmailTests.feature">
+    <None Include="BDD\DeleteEmail\DeleteEmail.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>EmailTests.feature.cs</LastGenOutput>
+      <LastGenOutput>DeleteEmail.feature.cs</LastGenOutput>
+    </None>
+    <None Include="BDD\SendEmail\SendEmailTests.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>SendEmailTests.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
