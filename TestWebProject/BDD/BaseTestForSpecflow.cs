@@ -13,8 +13,7 @@ namespace TestWebProject.Driver
         {
             Browser = Browser.Instance;
             Browser.WindowMaximize();
-            Browser.NavigateTo(Configurations.StartUrl);
-           
+            Browser.NavigateTo(Configurations.StartUrl);           
         }
 
         [AfterFeature]

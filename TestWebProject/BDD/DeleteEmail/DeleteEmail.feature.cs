@@ -88,27 +88,38 @@ namespace TestWebProject.BDD.DeleteEmail
             testRunner.CollectScenarioErrors();
         }
         
+        public virtual void FeatureBackground()
+        {
+#line 6
+#line hidden
+            TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+                        "username",
+                        "password"});
+            table1.AddRow(new string[] {
+                        "tiommikot@gmail.com",
+                        "a1123581321"});
+#line 7
+ testRunner.Given("I login with the following credentials:", ((string)(null)), table1, "Given ");
+#line hidden
+        }
+        
         public virtual void DeleteEmailVerification(string text, string sender, string recipient, string password, string[] exampleTags)
         {
-            string[] @__tags = new string[] {
-                    "mytag"};
-            if ((exampleTags != null))
-            {
-                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
-            }
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Delete email verification", null, @__tags);
-#line 12
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Delete email verification", null, exampleTags);
+#line 11
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 13
+#line 6
+this.FeatureBackground();
+#line 12
  testRunner.Given(string.Format("I sent an email to {0} with text {1}", recipient, text), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 14
+#line 13
  testRunner.And("I sign out", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 15
+#line 14
  testRunner.And(string.Format("I log in to the email box with {0} and {1}", recipient, password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 16
+#line 15
  testRunner.When(string.Format("I move the email from {0} to Trash", sender), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 17
+#line 16
  testRunner.Then(string.Format("Email with recipient {0} is in Trash", sender), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -117,7 +128,6 @@ this.ScenarioInitialize(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Delete email verification: hello world")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "DeleteEmail")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("mytag")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "hello world")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:text", "hello world")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:sender", "Eduard Tumas")]
@@ -125,7 +135,7 @@ this.ScenarioInitialize(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:password", "a1123581321")]
         public virtual void DeleteEmailVerification_HelloWorld()
         {
-#line 12
+#line 11
 this.DeleteEmailVerification("hello world", "Eduard Tumas", "dxvcdescfsdc@gmail.com", "a1123581321", ((string[])(null)));
 #line hidden
         }

@@ -14,6 +14,7 @@ namespace TestWebProject.PageObject
         private static readonly By _useAnotherAccountBy = By.XPath("//div[p='Use another account']");
         private static readonly By _logInForm = By.XPath("//*[@id='initialView']/div[contains(@role,'presentation')]");
         private static readonly By _changeUserButton = By.XPath("//*[@id='profileIdentifier']");
+        private static readonly By _errorMessage = By.XPath("//div[contains(text(),'Wrong password')]");
 
         public LogInForm()
         {
@@ -44,6 +45,9 @@ namespace TestWebProject.PageObject
       
         [FindsBy(How = How.XPath, Using = "//div[@data-value = 'ru']")]
         public IWebElement RussianLanguageSelected { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//div[contains(text(),'Wrong password')]")]
+        public IWebElement ErrorMessage { get; set; }
 
         public MainEmailBoxPage LogInToEmailBox(string email, string password)
         {

@@ -71,6 +71,12 @@
       <DependentUpon>DeleteEmail.feature</DependentUpon>
     </Compile>
     <Compile Include="BDD\DeleteEmail\DeleteEmailSteps.cs" />
+    <Compile Include="BDD\LoginTests\LogInTests.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LogInTests.feature</DependentUpon>
+    </Compile>
+    <Compile Include="BDD\LoginTests\LogInTestsSteps.cs" />
     <Compile Include="BDD\SendEmail\SendEmailTests.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -95,10 +101,6 @@
     <Compile Include="PageObject\MainNavigationPanel.cs" />
     <Compile Include="PageObject\SentMailPage.cs" />
     <Compile Include="PageObject\TrashPage.cs" />
-    <Compile Include="REST services\HTTPRequests.cs" />
-    <Compile Include="REST services\JsonSerialization.cs" />
-    <Compile Include="REST services\REST dto\UserGetDTO.cs" />
-    <Compile Include="REST services\TestsForWebServices.cs" />
     <Compile Include="Tests\DeleteEmailTests.cs" />
     <Compile Include="Tests\MultipleUsersLogIn.cs" />
     <Compile Include="Tests\SendEmailTests.cs" />
@@ -111,6 +113,10 @@
     <None Include="BDD\DeleteEmail\DeleteEmail.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>DeleteEmail.feature.cs</LastGenOutput>
+    </None>
+    <None Include="BDD\LoginTests\LogInTests.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>LogInTests.feature.cs</LastGenOutput>
     </None>
     <None Include="BDD\SendEmail\SendEmailTests.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

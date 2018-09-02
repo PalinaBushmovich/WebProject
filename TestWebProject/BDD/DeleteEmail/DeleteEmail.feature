@@ -3,11 +3,10 @@
 	As a math idiot
 	I want to be told the sum of two numbers
 
-@mytag
-#Background: 
-#	Given I login with the following credentials:
-#	| username  | password  |
-#	| tiommikot@gmail.com | a1123581321 |
+Background: 
+	Given I login with the following credentials:
+	| username  | password  |
+	| tiommikot@gmail.com | a1123581321 |
 
 Scenario Outline: Delete email verification
 	Given I sent an email to <recipient> with text <text>

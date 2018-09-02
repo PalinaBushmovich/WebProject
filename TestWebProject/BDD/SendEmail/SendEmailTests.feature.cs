@@ -143,53 +143,6 @@ namespace TestWebProject.BDD.SendEmail
  this.SendEmailVerification("dxvcdescfsdc@gmail.com", "a1123581321", "hi Jake", "tiommikot@gmail.com", ((string[])(null)));
 #line hidden
         }
-        
-        public virtual void DeleteEmailVerification(string username, string password, string text, string sender, string recipient, string[] exampleTags)
-        {
-            string[] @__tags = new string[] {
-                    "deleteEmail"};
-            if ((exampleTags != null))
-            {
-                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
-            }
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Delete email verification", null, @__tags);
-#line 18
- this.ScenarioInitialize(scenarioInfo);
-            this.ScenarioStart();
-#line 19
- testRunner.Given("I navigate to login form", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 20
- testRunner.And(string.Format("I log in to the email box with {0} and {1}", username, password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 21
- testRunner.And(string.Format("I sent an email to {0} with text {1}", recipient, text), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 22
- testRunner.And("I sign out", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 23
- testRunner.And(string.Format("I log in to the email box with {0} and {1}", recipient, password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 24
- testRunner.When(string.Format("I move the email from {0} to Trash", sender), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 25
- testRunner.Then(string.Format("Email with recipient {0} is in Trash", sender), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Delete email verification: tiommikot@gmail.com")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "SentEmailTest")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("deleteEmail")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "tiommikot@gmail.com")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:username", "tiommikot@gmail.com")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:password", "a1123581321")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:text", "hello world")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:sender", "Eduard Tumas")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:recipient", "dxvcdescfsdc@gmail.com")]
-        public virtual void DeleteEmailVerification_TiommikotGmail_Com()
-        {
-#line 18
- this.DeleteEmailVerification("tiommikot@gmail.com", "a1123581321", "hello world", "Eduard Tumas", "dxvcdescfsdc@gmail.com", ((string[])(null)));
-#line hidden
-        }
     }
 }
 #pragma warning restore

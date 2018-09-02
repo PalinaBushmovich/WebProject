@@ -15,5 +15,6 @@ namespace TestWebProject.Driver
         public const string Message = "hello world!";
         public const string SenderName = "Eduard Tumas";
         public const string RecipientName = "dxvcdescfsdc";
+        public const string ErrorMessage = "Wrong password. Try again or click Forgot password to reset it.";
     }
 }
