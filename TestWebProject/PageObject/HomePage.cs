@@ -43,7 +43,6 @@ namespace TestWebProject.PageObject
                 EnglishLanguage.Click();
                 WaitTillElementIsVisible(_nextButtonBy);
             }
-
             return new LogInForm();
         }
     }

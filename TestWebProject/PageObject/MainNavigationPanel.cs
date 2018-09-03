@@ -16,6 +16,7 @@ namespace TestWebProject.PageObject
             IWebDriver driver = Browser.GetDriver();
             PageFactory.InitElements(driver, this);
         }
+        private static readonly By _emailList = By.XPath("//span[@name = 'dxvcdescfsdc']/../..");
 
         [FindsBy(How = How.XPath, Using = "//span[@role='button']/span[contains(text(),'More')]")]
         public IWebElement MoreButton { get; set; }
@@ -28,6 +29,13 @@ namespace TestWebProject.PageObject
 
         [FindsBy(How = How.XPath, Using = "//a[contains(@title,'Inbox')]")]
         public IWebElement InboxLink { get; set; }
+
+        public SentMailPage OpenSentMailPage()
+        {
+            SentMailLink.Click();
+            WaitTillElementIsVisible(_emailList);
+            return new SentMailPage();
+        }
     }
 }
 

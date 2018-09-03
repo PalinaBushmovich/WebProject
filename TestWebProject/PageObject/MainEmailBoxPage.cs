@@ -69,7 +69,14 @@ namespace TestWebProject.PageObject
             mainPage.LinkToAccountPopUp.Click();
             mainPage.WaitTillElementIsVisible(_signOutButtonBy);
             mainPage.SignOutButton.Click();
+            IWebDriver driver = Browser.GetDriver();
 
+            if (driver.IsAlertPresent( ))
+            {
+                driver.SwitchTo().Alert();
+                driver.SwitchTo().Alert().Dismiss();
+                driver.SwitchTo().DefaultContent();
+            }
             LogInForm logInForm = new LogInForm();
 
             return logInForm;

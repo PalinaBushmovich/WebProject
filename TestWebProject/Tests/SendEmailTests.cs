@@ -31,20 +31,15 @@ namespace TestWebProject
 
             //Log in as first user
             _logInform.LogInToEmailBox(Constants.Sender, Constants.Password);
-
-            //Verify that login is successful
-            _navigationPanel = new MainNavigationPanel();
-
-            bool isFirstLoginSuccessfull = _navigationPanel.InboxLink.Displayed;
-            Assert.IsTrue(isFirstLoginSuccessfull, $"Login of first user '{Constants.Sender}' was not successful");
-
+      
+            _mainEmailBoxPage = new MainEmailBoxPage();
             //Write and send an email
             _mainEmailBoxPage.SendEmail(Constants.Recipient, Constants.Message);
 
-            //Verify that email is in sent mail box 
-            _navigationPanel.SentMailLink.Click();
+            _navigationPanel = new MainNavigationPanel();
 
-            _sentMailPage = new SentMailPage();
+            //Verify that email is in sent mail box 
+            _sentMailPage = _navigationPanel.OpenSentMailPage();
 
             bool isEmailInSentBox = _sentMailPage.RecipientName.Displayed;
             Assert.IsTrue(isEmailInSentBox, "Email was not sent and is not resent in Sent Mail box");

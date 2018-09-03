@@ -15,6 +15,9 @@ namespace TestWebProject.PageObject
         private static readonly By _logInForm = By.XPath("//*[@id='initialView']/div[contains(@role,'presentation')]");
         private static readonly By _changeUserButton = By.XPath("//*[@id='profileIdentifier']");
         private static readonly By _errorMessage = By.XPath("//div[contains(text(),'Wrong password')]");
+        private static readonly By _nextButtonBy = By.Id("identifierNext");
+        private static readonly By _contentBy = By.XPath("//div//content[contains(text(),'English (United Kingdom)‬')]");
+
 
         public LogInForm()
         {
@@ -49,6 +52,12 @@ namespace TestWebProject.PageObject
         [FindsBy(How = How.XPath, Using = "//div[contains(text(),'Wrong password')]")]
         public IWebElement ErrorMessage { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "//div//content[contains(text(),'Русский')]")]
+        public IWebElement RussianLanguageIsSelected { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//div[@role='option']//content[contains(text(),'English (United Kingdom)‬')]")]
+        public IWebElement EnglishLanguage { get; set; }
+
         public MainEmailBoxPage LogInToEmailBox(string email, string password)
         {
             HomePage homePage = new HomePage();
@@ -58,6 +67,14 @@ namespace TestWebProject.PageObject
             LogInForm logInForm = new LogInForm();
 
             WaitTillElementIsVisible(_logInForm);
+
+            if (RussianLanguageIsSelected.Displayed)
+            {
+                RussianLanguageIsSelected.Click();
+                WaitTillElementIsVisible(_contentBy);
+                EnglishLanguage.Click();
+                WaitTillElementIsVisible(_logInForm);
+            }
 
             if (driver.IsElementDisplayed(_changeUserButton))
             {
@@ -72,7 +89,7 @@ namespace TestWebProject.PageObject
             logInForm.WaitTillElementIsVisible(_loginInputBy);
             logInForm.LogInInput.SendKeys(email);
             logInForm.NextEmailButton.Click();
-            Thread.Sleep(2000);
+            
             logInForm.WaitTillElementIsVisible(_passwordInputBy);
             logInForm.PasswordInput.SendKeys(password);
             logInForm.PasswordInput.HighlightElement(_passwordInputBy);          

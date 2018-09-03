@@ -64,5 +64,18 @@ namespace TestWebProject.Driver
                 return false;
             }
         }
+
+        public static bool IsAlertPresent(this IWebDriver Driver)
+        {
+            try
+            {
+                Driver.SwitchTo().Alert();
+                return true;
+            }  
+            catch (Exception e)
+            {
+                return false;
+            } 
+        }
     }
 }

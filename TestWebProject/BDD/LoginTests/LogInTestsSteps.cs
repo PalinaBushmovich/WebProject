@@ -19,13 +19,15 @@ namespace TestWebProject.BDD.LoginTests
         [When(@"^I log in with invalid (.*) (.*) credentials$")]
         public void WhenILogInWithInvalid(string login, string password)
         {
+            By passwordInputBy = By.CssSelector("input[type = 'password']");
             LogInForm logInForm = new LogInForm();
             //Enter credentials           
             logInForm.LogInInput.SendKeys(login);
             logInForm.NextEmailButton.Click();
-            Thread.Sleep(2000);
+
+            logInForm.WaitTillElementIsVisible(passwordInputBy);
             logInForm.PasswordInput.SendKeys(password);
-            logInForm.NextEmailButton.Click();
+            logInForm.NextPasswordButton.Click();
         }
 
         [Then(@"Error message should be displayed")]

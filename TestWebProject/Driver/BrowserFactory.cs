@@ -33,6 +33,7 @@ namespace TestWebProject.Driver
                         var service = ChromeDriverService.CreateDefaultService();
                         var option = new ChromeOptions();
                         option.AddArgument("disable-infobars");
+                        option.AddArgument("--disable-notifications");
                         driver = new ChromeDriver(service, option, TimeSpan.FromSeconds(timeOutSec));
                         break;
                     }
@@ -43,16 +44,7 @@ namespace TestWebProject.Driver
                         driver = new FirefoxDriver(service, options, TimeSpan.FromSeconds(timeOutSec));
                         Browser.GetDriver();
                         break;
-                    }
-                case BrowserType.RemoteFirefox:
-                    {
-                        var cability = new FirefoxOptions();
-                        
-                        //cability.ToCapabilities(CapabilityType.BrowserName, "firefox");
-                       // cability.SetCapability(CapabilityType.Platform, new Platform(PlatformType.Any));
-                        driver = new RemoteWebDriver(new Uri("http://localhost:5566/wd/hub"), cability);
-                        break;
-                    }
+                    }             
                 case BrowserType.RemoteChrome:
                     {
                         var option = new ChromeOptions();
