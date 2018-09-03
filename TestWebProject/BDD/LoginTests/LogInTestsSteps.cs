@@ -16,7 +16,7 @@ namespace TestWebProject.BDD.LoginTests
             LogInForm _logInform = _homePage.OpenLoginForm();
         }
 
-        [When(@"^I log in with ..valid (.*) (.*) credantials$")]
+        [When(@"^I log in with invalid (.*) (.*) credentials$")]
         public void WhenILogInWithInvalid(string login, string password)
         {
             LogInForm logInForm = new LogInForm();

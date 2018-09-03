@@ -11,6 +11,7 @@ namespace TestWebProject
         private MainNavigationPanel _navigationPanel;
         private MainEmailBoxPage _mainEmailBoxPage;
         private SentMailPage _sentMailPage;
+        private HomePage _homePage;
         private LogInForm _logInform;
 
         [ClassInitialize()]
@@ -24,7 +25,7 @@ namespace TestWebProject
         [TestMethod, TestCategory("Email")]
         public void LogInSendEmailLogOut_LogInChechThatEmailIsSent()
         {
-            IHomePage _homePage = new HomePageDecorator(new HomePage());
+            _homePage = new HomePage();
 
             _logInform = _homePage.OpenLoginForm();
 
@@ -54,7 +55,7 @@ namespace TestWebProject
 
             //Verify that login is successful
             bool isSecondLoginSuccessfull = _navigationPanel.InboxLink.Displayed;
-           Assert.IsTrue(isSecondLoginSuccessfull, $"Login of second user '{Constants.Recipient}' was not successful");
+            Assert.IsTrue(isSecondLoginSuccessfull, $"Login of second user '{Constants.Recipient}' was not successful");
 
             //Verify that email is in Inbox 
             bool isEmailInInbox = _sentMailPage.SenderName.Displayed;

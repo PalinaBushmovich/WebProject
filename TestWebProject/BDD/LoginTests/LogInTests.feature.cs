@@ -44,7 +44,7 @@ namespace TestWebProject.BDD.LoginTests
         public static void FeatureSetup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner(null, 0);
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "LogInTests", "\tIn order to check log in with valid and invalid credantials ", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "LogInTests", "\tIn order to check log in with valid and invalid credentials ", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -87,7 +87,7 @@ namespace TestWebProject.BDD.LoginTests
             testRunner.CollectScenarioErrors();
         }
         
-        public virtual void LogInWithInvalidCredantials(string username, string password, string[] exampleTags)
+        public virtual void LogInWithInvalidCredentials(string username, string password, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "login"};
@@ -95,14 +95,14 @@ namespace TestWebProject.BDD.LoginTests
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Log in with invalid credantials", null, @__tags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Log in with invalid credentials", null, @__tags);
 #line 5
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 6
  testRunner.Given("I navigate to Login form", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 7
- testRunner.When(string.Format("I log in with invalid {0} {1} credantials", username, password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("I log in with invalid {0} {1} credentials", username, password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 8
  testRunner.Then("Error message should be displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -110,44 +110,16 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Log in with invalid credantials: tiommot@gmail.com")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "LogInTests")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("login")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "tiommot@gmail.com")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:username", "tiommot@gmail.com")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:password", "a1123581321")]
-        public virtual void LogInWithInvalidCredantials_TiommotGmail_Com()
-        {
-#line 5
-this.LogInWithInvalidCredantials("tiommot@gmail.com", "a1123581321", ((string[])(null)));
-#line hidden
-        }
-        
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Log in with invalid credantials: tiommikotgmail.com")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "LogInTests")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("login")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "tiommikotgmail.com")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:username", "tiommikotgmail.com")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:password", "a1123581321")]
-        public virtual void LogInWithInvalidCredantials_Tiommikotgmail_Com()
-        {
-#line 5
-this.LogInWithInvalidCredantials("tiommikotgmail.com", "a1123581321", ((string[])(null)));
-#line hidden
-        }
-        
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Log in with invalid credantials: tiommikot@gmail.com")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Log in with invalid credentials: tiommikot@gmail.com")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "LogInTests")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("login")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "tiommikot@gmail.com")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:username", "tiommikot@gmail.com")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:password", "a11235821")]
-        public virtual void LogInWithInvalidCredantials_TiommikotGmail_Com()
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:password", "a1123582")]
+        public virtual void LogInWithInvalidCredentials_TiommikotGmail_Com()
         {
 #line 5
-this.LogInWithInvalidCredantials("tiommikot@gmail.com", "a11235821", ((string[])(null)));
+this.LogInWithInvalidCredentials("tiommikot@gmail.com", "a1123582", ((string[])(null)));
 #line hidden
         }
     }

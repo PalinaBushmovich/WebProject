@@ -93,9 +93,7 @@
     <Compile Include="PageObject\AbstractPage.cs" />
     <Compile Include="PageObject\EmailContentPage.cs" />
     <Compile Include="PageObject\EmailForm.cs" />
-    <Compile Include="PageObject\Decorator\HomePage.cs" />
-    <Compile Include="PageObject\Decorator\HomePageDecorator.cs" />
-    <Compile Include="PageObject\Decorator\IHomePage.cs" />
+    <Compile Include="PageObject\HomePage.cs" />
     <Compile Include="PageObject\LogInForm.cs" />
     <Compile Include="PageObject\MainEmailBoxPage.cs" />
     <Compile Include="PageObject\MainNavigationPanel.cs" />

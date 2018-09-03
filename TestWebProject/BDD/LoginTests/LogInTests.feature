@@ -1,13 +1,11 @@
 ﻿Feature: LogInTests
-	In order to check log in with valid and invalid credantials 
+	In order to check log in with valid and invalid credentials 
 
 @login
-Scenario Outline: Log in with invalid credantials 
+Scenario Outline: Log in with invalid credentials 
 	Given I navigate to Login form	
-	When I log in with invalid <username> <password> credantials 
+	When I log in with invalid <username> <password> credentials 
 	Then Error message should be displayed 
 	Examples:
 	| username               | password       |
-	| tiommot@gmail.com      | a1123581321    |
-	| tiommikotgmail.com     | a1123581321    |
-	| tiommikot@gmail.com    | a11235821      |
+	| tiommikot@gmail.com    | a1123582       |
