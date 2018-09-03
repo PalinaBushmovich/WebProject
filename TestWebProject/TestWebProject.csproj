@@ -100,7 +100,6 @@
     <Compile Include="PageObject\SentMailPage.cs" />
     <Compile Include="PageObject\TrashPage.cs" />
     <Compile Include="Tests\DeleteEmailTests.cs" />
-    <Compile Include="Tests\MultipleUsersLogIn.cs" />
     <Compile Include="Tests\SendEmailTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
