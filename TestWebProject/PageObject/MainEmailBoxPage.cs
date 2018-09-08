@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.PageObjects;
+using Serilog;
 using System;
 using System.Threading;
 using TestWebProject.Driver;
@@ -45,70 +46,99 @@ namespace TestWebProject.PageObject
 
         public void SendEmail(string recipient, string message)
         {
-            MainEmailBoxPage mainPage = new MainEmailBoxPage();
+            try
+            {
+                MainEmailBoxPage mainPage = new MainEmailBoxPage();
 
-            mainPage.WaitTillElementIsVisible(_composeButtonXPath);
-            mainPage.ComposeButton.Click();
+                mainPage.WaitTillElementIsVisible(_composeButtonXPath);
+                mainPage.ComposeButton.Click();
 
-            EmailForm emailForm = new EmailForm();
+                EmailForm emailForm = new EmailForm();
 
-            emailForm.WaitTillElementIsVisible(_sendFormXPath);
-            Browser.GetDriver().SwitchTo().ActiveElement();
+                emailForm.WaitTillElementIsVisible(_sendFormXPath);
+                Browser.GetDriver().SwitchTo().ActiveElement();
 
-            emailForm.ToField.SendKeys(recipient);
-            emailForm.ToField.SendKeys(Keys.Enter);
-            emailForm.MessageArea.SendKeys(message);
-            emailForm.MessageArea.SendKeys(Keys.Enter);
-            Thread.Sleep(2000);
-            emailForm.SendButton.Click();
+                emailForm.ToField.SendKeys(recipient);
+                emailForm.ToField.SendKeys(Keys.Enter);
+                emailForm.MessageArea.SendKeys(message);
+                emailForm.MessageArea.SendKeys(Keys.Enter);
+                Thread.Sleep(2000);
+                emailForm.SendButton.Click();
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, $"Email was not sent to '{recipient}'");
+            }
         }
 
         public LogInForm SignOut()
         {
-            MainEmailBoxPage mainPage = new MainEmailBoxPage();
-            mainPage.LinkToAccountPopUp.Click();
-            mainPage.WaitTillElementIsVisible(_signOutButtonBy);
-            mainPage.SignOutButton.Click();
-            IWebDriver driver = Browser.GetDriver();
-
-            if (driver.IsAlertPresent( ))
+            try
             {
-                driver.SwitchTo().Alert();
-                driver.SwitchTo().Alert().Dismiss();
-                driver.SwitchTo().DefaultContent();
-            }
-            LogInForm logInForm = new LogInForm();
+                MainEmailBoxPage mainPage = new MainEmailBoxPage();
+                mainPage.LinkToAccountPopUp.Click();
+                mainPage.WaitTillElementIsVisible(_signOutButtonBy);
+                mainPage.SignOutButton.Click();
+                IWebDriver driver = Browser.GetDriver();
 
-            return logInForm;
+                if (driver.IsAlertPresent())
+                {
+                    driver.SwitchTo().Alert();
+                    driver.SwitchTo().Alert().Dismiss();
+                    driver.SwitchTo().DefaultContent();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "User didn't sign out");
+            }
+
+            return new LogInForm();
         }
 
         public void DeleteEmail(string sender)
         {
-            MainEmailBoxPage mainPage = new MainEmailBoxPage();
+            try
+            {
+                MainEmailBoxPage mainPage = new MainEmailBoxPage();
 
-            string emailName = String.Format(_emailNameXPath, sender);
-            IWebElement emailTitle = Browser.GetDriver().FindElement(By.XPath(emailName));
-            MainNavigationPanel navigationPanel = new MainNavigationPanel();
+                string emailName = String.Format(_emailNameXPath, sender);
+                IWebElement emailTitle = Browser.GetDriver().FindElement(By.XPath(emailName));
+                MainNavigationPanel navigationPanel = new MainNavigationPanel();
 
-            navigationPanel.MoreButton.Click();
+                navigationPanel.MoreButton.Click();
 
-            Actions Action = new Actions(Browser.GetDriver());
-            Action.DragAndDrop(emailTitle, navigationPanel.TrashButton).Build().Perform();
+                Actions Action = new Actions(Browser.GetDriver());
+                Action.DragAndDrop(emailTitle, navigationPanel.TrashButton).Build().Perform();
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "Email was not deleted");
+            }
         }
 
         public void DeleteEmailViaRightClick(string sender)
         {
-            string emailName = String.Format(_emailNameXPath, sender);
-            IWebElement emailTitle = Browser.GetDriver().FindElement(By.XPath(emailName));
-            MainNavigationPanel navigationPanel = new MainNavigationPanel();
+            try
+            {
 
-            Actions Action = new Actions(Browser.GetDriver());
+                string emailName = String.Format(_emailNameXPath, sender);
+                IWebElement emailTitle = Browser.GetDriver().FindElement(By.XPath(emailName));
+                MainNavigationPanel navigationPanel = new MainNavigationPanel();
 
-            Actions RightClickAction = new Actions(Browser.GetDriver()).ContextClick(emailTitle);
+                Actions Action = new Actions(Browser.GetDriver());
 
-            RightClickAction.Build().Perform();
+                Actions RightClickAction = new Actions(Browser.GetDriver()).ContextClick(emailTitle);
 
-            DeleteICon.Click();
+                RightClickAction.Build().Perform();
+
+                DeleteICon.Click();
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "Email was not deleted via right click");
+            }
 
         }
     }

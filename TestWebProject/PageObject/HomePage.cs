@@ -1,5 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
+using Serilog;
+using System;
 using TestWebProject.Driver;
 
 
@@ -31,18 +33,28 @@ namespace TestWebProject.PageObject
 
         public LogInForm OpenLoginForm()
         {
-            //Click Sign in button
-            SignInButton.JSclick(_signInButtonBy);
-
-            WaitTillElementIsVisible(_logInInputBy);
-
-            if (RussianLanguageIsSelected.Displayed)
+            try
             {
-                RussianLanguageIsSelected.Click();
-                WaitTillElementIsVisible(_contentBy);
-                EnglishLanguage.Click();
-                WaitTillElementIsVisible(_nextButtonBy);
+                //Click Sign in button
+                SignInButton.JSclick(_signInButtonBy);
+
+                WaitTillElementIsVisible(_logInInputBy);
+
+                if (RussianLanguageIsSelected.Displayed)
+                {
+                    RussianLanguageIsSelected.Click();
+                    WaitTillElementIsVisible(_contentBy);
+                    EnglishLanguage.Click();
+                    WaitTillElementIsVisible(_nextButtonBy);
+                }               
             }
+            catch (Exception ex)
+
+            {
+               Log.Error(ex, "Log in form was not opened");
+                
+            }
+
             return new LogInForm();
         }
     }

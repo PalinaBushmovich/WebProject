@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Utilities.Logger;
+using System;
 using TechTalk.SpecFlow;
 using TestWebProject.Business_Object;
 using TestWebProject.PageObject;
+using Serilog;
 
 namespace TestWebProject.BDD.DeleteEmail
 {
@@ -17,6 +19,8 @@ namespace TestWebProject.BDD.DeleteEmail
             HomePage _homePage = new HomePage();
             LogInForm _logInform = _homePage.OpenLoginForm();
             _logInform.LogInToEmailBox(user.Username, user.Password);
+            Logger.Configure();
+            Log.Information("I login with the following credentials: {Username} / {Password}", table.Rows[0][0], table.Rows[0][1]);
         }
     }
 }

@@ -1,11 +1,13 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
+using Serilog;
 using System;
 using System.Threading;
 using TechTalk.SpecFlow;
 using TestWebProject.Driver;
 using TestWebProject.PageObject;
+using Utilities.Logger;
 
 namespace TestWebProject
 {
@@ -17,6 +19,8 @@ namespace TestWebProject
         {
             HomePage _homePage = new HomePage();
             LogInForm _logInform = _homePage.OpenLoginForm();
+            Logger.Configure();
+            Log.Information("Login form is opened");
         }
 
         [Given(@"I log in to the email box with (.*) and (.*)")]
@@ -24,6 +28,8 @@ namespace TestWebProject
         {
             LogInForm _logInform = new LogInForm();
             _logInform.LogInToEmailBox(login, password);
+            Logger.Configure();
+            Log.Information($"I login with the invalid credentials: {login} / {password}");
         }
 
         [When(@"I sent an email to (.*) with text (.*)")]
@@ -31,6 +37,8 @@ namespace TestWebProject
         {
             MainEmailBoxPage _mainEmailBoxPage = new MainEmailBoxPage();
             _mainEmailBoxPage.SendEmail(email, text);
+            Logger.Configure();
+            Log.Information($"I send message with text '{text}': to '{email}'");
         }
 
         [Given(@"I sent an email to (.*) with text (.*)")]
@@ -38,6 +46,8 @@ namespace TestWebProject
         {
             MainEmailBoxPage _mainEmailBoxPage = new MainEmailBoxPage();
             _mainEmailBoxPage.SendEmail(email, text);
+            Logger.Configure();
+            Log.Information($"I send message with text '{text}': to '{email}'");
         }
 
         [Given(@"I sign out")]
@@ -51,6 +61,9 @@ namespace TestWebProject
             mainPage.SignOutButton.Click();
 
             LogInForm logInForm = new LogInForm();
+
+            Logger.Configure();
+            Log.Information($"I sign out");
         }
 
         [Then(@"the email to (.*) is present in Sent folder")]
@@ -67,6 +80,9 @@ namespace TestWebProject
           
             bool isEmailInSentBox = toField.Displayed;
             Assert.IsTrue(isEmailInSentBox, "Email was not sent and is not present in Sent Mail box");
+
+            Logger.Configure();
+            Log.Information($"I check that email from '{email}' is present in the Sent folder." );
         }
 
         [When(@"I move the email from (.*) to Trash")]
@@ -83,6 +99,9 @@ namespace TestWebProject
             RightClickAction.Build().Perform();
 
             mainPage.DeleteICon.Click();
+            Logger.Configure();
+            Log.Information($"I move email from '{sender}' to trash.");
+
         }
 
         [Then(@"Email with recipient (.*) is in Trash")]
@@ -100,6 +119,8 @@ namespace TestWebProject
             bool isEmailInTrash = trashPage.SenderName.Displayed;
             Assert.IsTrue(isEmailInTrash, $"Email is not displayed in Trash");
 
+            Logger.Configure();
+            Log.Information($"I check that email from '{sender}' is present in the trash.");
         }
     }
 }

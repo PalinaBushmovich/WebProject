@@ -1,8 +1,10 @@
 ﻿using OpenQA.Selenium;
+using Serilog;
 using System;
 using System.Threading;
 using TechTalk.SpecFlow;
 using TestWebProject.PageObject;
+using Utilities.Logger;
 
 namespace TestWebProject.BDD.LoginTests
 {
@@ -28,6 +30,8 @@ namespace TestWebProject.BDD.LoginTests
             logInForm.WaitTillElementIsVisible(passwordInputBy);
             logInForm.PasswordInput.SendKeys(password);
             logInForm.NextPasswordButton.Click();
+            Logger.Configure();
+            Log.Information($"I login with the invalid credentials: {login} / {password}");
         }
 
         [Then(@"Error message should be displayed")]
@@ -36,6 +40,8 @@ namespace TestWebProject.BDD.LoginTests
             By errorMessage = By.XPath("//div[contains(text(),'Wrong password')]");
             LogInForm logInForm = new LogInForm();
             logInForm.WaitTillElementIsVisible(errorMessage);
+            Logger.Configure();
+            Log.Information("Error message should be displayed");
         }
 
 
@@ -45,6 +51,8 @@ namespace TestWebProject.BDD.LoginTests
             By composeButtonBy = By.XPath("//div[contains(text(),'COMPOSE')]");
             LogInForm logInForm = new LogInForm();
             logInForm.WaitTillElementIsVisible(composeButtonBy);
+            Logger.Configure();
+            Log.Information("Compose button should be displayed");
         }
     }
 }

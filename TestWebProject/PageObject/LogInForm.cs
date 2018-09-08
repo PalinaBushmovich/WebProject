@@ -1,5 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
+using Serilog;
+using System;
 using System.Threading;
 using TestWebProject.Driver;
 
@@ -60,45 +62,52 @@ namespace TestWebProject.PageObject
 
         public MainEmailBoxPage LogInToEmailBox(string email, string password)
         {
-            HomePage homePage = new HomePage();
-            IWebDriver driver = Browser.GetDriver();
-            driver.Manage();
-
-            LogInForm logInForm = new LogInForm();
-
-            WaitTillElementIsVisible(_logInForm);
-
-            if (RussianLanguageIsSelected.Displayed)
+            try
             {
-                RussianLanguageIsSelected.Click();
-                WaitTillElementIsVisible(_contentBy);
-                EnglishLanguage.Click();
+                HomePage homePage = new HomePage();
+                IWebDriver driver = Browser.GetDriver();
+                driver.Manage();
+
+                LogInForm logInForm = new LogInForm();
+
                 WaitTillElementIsVisible(_logInForm);
-            }
 
-            if (driver.IsElementDisplayed(_changeUserButton))
+                if (RussianLanguageIsSelected.Displayed)
+                {
+                    RussianLanguageIsSelected.Click();
+                    WaitTillElementIsVisible(_contentBy);
+                    EnglishLanguage.Click();
+                    WaitTillElementIsVisible(_logInForm);
+                }
+
+                if (driver.IsElementDisplayed(_changeUserButton))
+                {
+                    ChangeUserButton.Click();
+                }
+                if (driver.IsElementDisplayed(_useAnotherAccountBy))
+                {
+                    logInForm.UseAnotherAccountButton.Click();
+                }
+
+                //Enter credentials 
+                logInForm.WaitTillElementIsVisible(_loginInputBy);
+                logInForm.LogInInput.SendKeys(email);
+                logInForm.NextEmailButton.Click();
+
+                logInForm.WaitTillElementIsVisible(_passwordInputBy);
+                logInForm.PasswordInput.SendKeys(password);
+                logInForm.PasswordInput.HighlightElement(_passwordInputBy);
+                logInForm.NextPasswordButton.Click();
+
+                //Wait till main mail box page is loaded 
+                MainEmailBoxPage mainEmailBoxPage = new MainEmailBoxPage();
+
+                mainEmailBoxPage.WaitTillElementIsVisible(_composeButtonBy);
+            }
+            catch (Exception ex)
             {
-                ChangeUserButton.Click();
+                Log.Error(ex, "Log in to the email box was failed");
             }
-            if (driver.IsElementDisplayed(_useAnotherAccountBy))
-            {
-                logInForm.UseAnotherAccountButton.Click();
-            }
-
-            //Enter credentials 
-            logInForm.WaitTillElementIsVisible(_loginInputBy);
-            logInForm.LogInInput.SendKeys(email);
-            logInForm.NextEmailButton.Click();
-            
-            logInForm.WaitTillElementIsVisible(_passwordInputBy);
-            logInForm.PasswordInput.SendKeys(password);
-            logInForm.PasswordInput.HighlightElement(_passwordInputBy);          
-            logInForm.NextPasswordButton.Click();
-
-            //Wait till main mail box page is loaded 
-            MainEmailBoxPage mainEmailBoxPage = new MainEmailBoxPage();   
-
-            mainEmailBoxPage.WaitTillElementIsVisible(_composeButtonBy);
 
             return new MainEmailBoxPage();
         }
