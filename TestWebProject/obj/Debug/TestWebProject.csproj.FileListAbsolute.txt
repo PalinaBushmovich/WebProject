@@ -14,8 +14,6 @@ D:\data\WebProject\TestWebProject\obj\Debug\TestWebProject.pdb
 D:\data\WebProject\TestWebProject\bin\Debug\HtmlElements.dll
 D:\data\WebProject\TestWebProject\bin\Debug\HtmlElements.xml
 D:\data\WebProject\TestWebProject\bin\Debug\Data\LogInData.xml
-C:\WebProject\TestWebProject\obj\Debug\TestWebProject.csprojAssemblyReference.cache
-C:\WebProject\TestWebProject\obj\Debug\TestWebProject.csproj.CoreCompileInputs.cache
 C:\WebProject\TestWebProject\bin\Debug\Data\LogInData.xml
 C:\WebProject\TestWebProject\bin\Debug\TestWebProject.dll.config
 C:\WebProject\TestWebProject\bin\Debug\TestWebProject.dll
@@ -41,6 +39,8 @@ C:\WebProject\TestWebProject\bin\Debug\Serilog.Sinks.File.xml
 C:\WebProject\TestWebProject\bin\Debug\Serilog.Sinks.RollingFile.xml
 C:\WebProject\TestWebProject\bin\Debug\WebDriver.xml
 C:\WebProject\TestWebProject\bin\Debug\WebDriver.Support.xml
+C:\WebProject\TestWebProject\obj\Debug\TestWebProject.csprojAssemblyReference.cache
+C:\WebProject\TestWebProject\obj\Debug\TestWebProject.csproj.CoreCompileInputs.cache
 C:\WebProject\TestWebProject\obj\Debug\TestWebProject.csproj.CopyComplete
 C:\WebProject\TestWebProject\obj\Debug\TestWebProject.dll
 C:\WebProject\TestWebProject\obj\Debug\TestWebProject.pdb
