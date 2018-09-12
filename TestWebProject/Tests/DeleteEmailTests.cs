@@ -20,9 +20,10 @@ namespace TestWebProject.Tests
         private LogInForm _logInform;
 
         [ClassInitialize()]
-        public static void SendEmailTestsInitialize(TestContext context)
+        public static void DeleteEmailInitialize(TestContext testContext)
         {
-            Browser = Browser.Instance;
+            _testContext = testContext;
+            _browser = Browser.Instance;
             Browser.WindowMaximize();
             Browser.NavigateTo(Configurations.StartUrl);
         }
