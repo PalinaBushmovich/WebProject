@@ -11,7 +11,7 @@ Scenario Outline: Delete email verification
 	And I sign out
 	And I log in to the email box with <recipient> and <password>
 	When I move the email from <sender> to Trash
-	Then Email with recipient <sender> is in Trash
+	Then I see that email with recipient <sender> is in Trash
 	Examples: 
-	 | text        | sender       | recipient              | password  |
-	| hello world | Eduard Tumas | dxvcdescfsdc@gmail.com |a1123581321 |
+	 | text        | sender       | recipient              | password   |
+	 | hello world | Eduard Tumas | dxvcdescfsdc@gmail.com |a1123581321 |

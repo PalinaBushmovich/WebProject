@@ -4,6 +4,7 @@ using Serilog;
 using System;
 using System.Threading;
 using TestWebProject.Driver;
+using Utilities.Logger;
 
 namespace TestWebProject.PageObject
 {
@@ -12,14 +13,14 @@ namespace TestWebProject.PageObject
         private static readonly By _passwordInputBy = By.CssSelector("input[type = 'password']");
         private static readonly By _loginInputBy = By.CssSelector("input[type ='email']");
         private static readonly By _composeButtonBy = By.XPath("//div[contains(text(),'COMPOSE')]");
-      
+
         private static readonly By _useAnotherAccountBy = By.XPath("//div[p='Use another account']");
         private static readonly By _logInForm = By.XPath("//*[@id='initialView']/div[contains(@role,'presentation')]");
         private static readonly By _changeUserButton = By.XPath("//*[@id='profileIdentifier']");
         private static readonly By _errorMessage = By.XPath("//div[contains(text(),'Wrong password')]");
         private static readonly By _nextButtonBy = By.Id("identifierNext");
         private static readonly By _contentBy = By.XPath("//div//content[contains(text(),'English (United Kingdom)‬')]");
-
+        private static readonly By errorMessage = By.XPath("//div[contains(text(),'Wrong password')]");
 
         public LogInForm()
         {
@@ -47,7 +48,7 @@ namespace TestWebProject.PageObject
 
         [FindsBy(How = How.XPath, Using = "//*[@id='profileIdentifier']")]
         public IWebElement ChangeUserButton { get; set; }
-      
+
         [FindsBy(How = How.XPath, Using = "//div[@data-value = 'ru']")]
         public IWebElement RussianLanguageSelected { get; set; }
 
@@ -103,9 +104,13 @@ namespace TestWebProject.PageObject
                 MainEmailBoxPage mainEmailBoxPage = new MainEmailBoxPage();
 
                 mainEmailBoxPage.WaitTillElementIsVisible(_composeButtonBy);
+
+                Logger.Configure();
+                Log.Information($"I login with the following credentials: '{email}' / '{password}'");
             }
             catch (Exception ex)
             {
+                Logger.Configure();
                 Log.Error(ex, "Log in to the email box was failed");
             }
 

@@ -107,7 +107,7 @@ namespace TestWebProject.BDD.SendEmail
 #line 10
  testRunner.When(string.Format("I sent an email to {0} with text {1}", email, text), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 11
- testRunner.Then(string.Format("the email to {0} is present in Sent folder", email), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then(string.Format("I see that the email to {0} is present in Sent folder", email), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

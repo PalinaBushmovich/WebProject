@@ -1,7 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
+using System;
+using System.IO;
 using TestWebProject.Driver;
 using TestWebProject.PageObject;
+using TestWebProject.Utilities;
 
 namespace TestWebProject
 {
@@ -15,14 +18,13 @@ namespace TestWebProject
         private LogInForm _logInform;
 
         [ClassInitialize()]
-        public void SendEmailInitialize(TestContext context)
+        public static void SendEmailInitialize(TestContext context)
         {
-            Browser Browser = Browser.Instance;
-            Browser.WindowMaximize();
-            Browser.NavigateTo(Configurations.StartUrl);
+            InitializeTestsExecution(context);
         }
-
-        public void LogInSendEmailLogOut_LogInChechThatEmailIsSent()
+     
+        [TestMethod]
+        public void LogInSendEmailLogOut_LogInCheckThatEmailIsSent()
         {
             _homePage = new HomePage();
 
@@ -65,6 +67,14 @@ namespace TestWebProject
 
             bool isEmailInTrash = trashPage.SenderName.Displayed;
             Assert.IsTrue(isEmailInTrash, $"Email is not displayed in Trash");
+
+            _logInform = _mainEmailBoxPage.SignOut();
+        }
+
+        [TestCleanup]
+        public void Cleanuptests()
+        {
+            ScreenshotMaker.TakeBrowserScreenshot(_testContext);
         }
     }
 }

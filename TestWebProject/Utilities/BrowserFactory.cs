@@ -4,10 +4,7 @@ using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Remote;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 
 namespace TestWebProject.Driver
 {
@@ -17,34 +14,37 @@ namespace TestWebProject.Driver
         {
             Chrome,
             Firefox,
-            IExplorer,         
+            IExplorer,
             RemoteFirefox,
             RemoteChrome
         }
 
         public static IWebDriver GetDriver(BrowserType type, int timeOutSec)
         {
-            RemoteWebDriver driver = null;
+            IWebDriver driver = null;
+
 
             switch (type)
             {
                 case BrowserType.Chrome:
                     {
-                        var service = ChromeDriverService.CreateDefaultService();
+                        //in order to run test from console. test results should be stored in the TestResults folder             
+                        string solutionParentDirectory = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.FullName.ToString();
+                        string pathToDriver = Path.Combine(solutionParentDirectory, @"TestWebProject\bin\Debug");
                         var option = new ChromeOptions();
                         option.AddArgument("disable-infobars");
                         option.AddArgument("--disable-notifications");
-                        driver = new ChromeDriver(service, option, TimeSpan.FromSeconds(timeOutSec));
+                        driver = new ChromeDriver(pathToDriver);
                         break;
                     }
                 case BrowserType.Firefox:
                     {
-                        var service = FirefoxDriverService.CreateDefaultService();                     
+                        var service = FirefoxDriverService.CreateDefaultService();
                         var options = new FirefoxOptions();
                         driver = new FirefoxDriver(service, options, TimeSpan.FromSeconds(timeOutSec));
                         Browser.GetDriver();
                         break;
-                    }             
+                    }
                 case BrowserType.RemoteChrome:
                     {
                         var option = new ChromeOptions();

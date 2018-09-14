@@ -2,11 +2,13 @@
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TestWebProject.Driver;
 using TestWebProject.PageObject;
+using TestWebProject.Utilities;
 
 namespace TestWebProject.Tests
 {
@@ -20,16 +22,13 @@ namespace TestWebProject.Tests
         private LogInForm _logInform;
 
         [ClassInitialize()]
-        public static void DeleteEmailInitialize(TestContext testContext)
+        public static void DeleteEmailInitialize(TestContext context)
         {
-            _testContext = testContext;
-            _browser = Browser.Instance;
-            Browser.WindowMaximize();
-            Browser.NavigateTo(Configurations.StartUrl);
+            InitializeTestsExecution(context);
         }
 
         [TestMethod, TestCategory("Email")]
-        public void LogInSendEmail_DeleteViaRightMouseClick()
+        public void LogIn_SendEmail_DeleteViaRightMouseClick()
         {
             _homePage = new HomePage();
 
@@ -57,6 +56,14 @@ namespace TestWebProject.Tests
             //Delete an email
             _mainEmailBoxPage.DeleteEmailViaRightClick(Constants.SenderName);
 
+            _logInform = _mainEmailBoxPage.SignOut();         
+        }
+    
+        [TestCleanup]
+        public void Cleanuptests()
+        {
+            ScreenshotMaker.TakeBrowserScreenshot(_testContext);
+           
         }
     }
 }

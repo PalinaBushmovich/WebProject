@@ -63,6 +63,7 @@
       <HintPath>..\packages\System.ValueTuple.4.5.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -74,6 +75,7 @@
     </Reference>
     <Reference Include="WebDriver, Version=3.14.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Selenium.WebDriver.3.14.0\lib\net45\WebDriver.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="WebDriver.Support, Version=3.14.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Selenium.Support.3.14.0\lib\net45\WebDriver.Support.dll</HintPath>
@@ -100,12 +102,13 @@
     </Compile>
     <Compile Include="BDD\SendEmail\SendEmailTestSteps.cs" />
     <Compile Include="Business Object\User.cs" />
-    <Compile Include="Utilities\BaseTest.cs" />
+    <Compile Include="Tests\BaseTest.cs" />
     <Compile Include="Utilities\Browser.cs" />
     <Compile Include="Utilities\BrowserFactory.cs" />
     <Compile Include="Utilities\Configurations.cs" />
     <Compile Include="Utilities\Constants.cs" />
     <Compile Include="Utilities\Logger.cs" />
+    <Compile Include="Utilities\ScreenshotMaker.cs" />
     <Compile Include="Utilities\WebDriverExtensions.cs" />
     <Compile Include="PageObject\AbstractPage.cs" />
     <Compile Include="PageObject\EmailContentPage.cs" />

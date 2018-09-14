@@ -119,7 +119,7 @@ this.FeatureBackground();
 #line 13
  testRunner.When(string.Format("I move the email from {0} to Trash", sender), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 14
- testRunner.Then(string.Format("Email with recipient {0} is in Trash", sender), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then(string.Format("I see that email with recipient {0} is in Trash", sender), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

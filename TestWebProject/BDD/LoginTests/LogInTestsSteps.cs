@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using OpenQA.Selenium;
 using Serilog;
 using System;
 using System.Threading;
@@ -34,12 +35,16 @@ namespace TestWebProject.BDD.LoginTests
             Log.Information($"I login with the invalid credentials: {login} / {password}");
         }
 
-        [Then(@"Error message should be displayed")]
-        public void ThenErrorMessageShouldBeDisplayed()
+        [Then(@"I see error message")]
+        public void ThenISeeErrorMessage()
         {
             By errorMessage = By.XPath("//div[contains(text(),'Wrong password')]");
             LogInForm logInForm = new LogInForm();
             logInForm.WaitTillElementIsVisible(errorMessage);
+
+            bool doesErrorMessageDisplayed = logInForm.ErrorMessage.Displayed;
+            Assert.IsTrue(doesErrorMessageDisplayed, $"Error message is not displayed after input incorrect password");
+
             Logger.Configure();
             Log.Information("Error message should be displayed");
         }

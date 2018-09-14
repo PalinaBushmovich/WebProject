@@ -5,6 +5,7 @@ using Serilog;
 using System;
 using System.Threading;
 using TestWebProject.Driver;
+using Utilities.Logger;
 
 namespace TestWebProject.PageObject
 {
@@ -64,9 +65,13 @@ namespace TestWebProject.PageObject
                 emailForm.MessageArea.SendKeys(Keys.Enter);
                 Thread.Sleep(2000);
                 emailForm.SendButton.Click();
+
+                Logger.Configure();
+                Log.Information($"Email with the text'{message}' was sent to '{recipient}'");
             }
             catch (Exception ex)
             {
+                Logger.Configure();
                 Log.Error(ex, $"Email was not sent to '{recipient}'");
             }
         }
@@ -88,9 +93,13 @@ namespace TestWebProject.PageObject
                     driver.SwitchTo().DefaultContent();
                 }
 
+                Logger.Configure();
+                Log.Information($"User was sign out'");
+
             }
             catch (Exception ex)
             {
+                Logger.Configure();
                 Log.Error(ex, "User didn't sign out");
             }
 
@@ -111,9 +120,13 @@ namespace TestWebProject.PageObject
 
                 Actions Action = new Actions(Browser.GetDriver());
                 Action.DragAndDrop(emailTitle, navigationPanel.TrashButton).Build().Perform();
+
+                Logger.Configure();
+                Log.Information($"Email from {sender} was deleted'");
             }
             catch (Exception ex)
             {
+                Logger.Configure();
                 Log.Error(ex, "Email was not deleted");
             }
         }
@@ -122,7 +135,6 @@ namespace TestWebProject.PageObject
         {
             try
             {
-
                 string emailName = String.Format(_emailNameXPath, sender);
                 IWebElement emailTitle = Browser.GetDriver().FindElement(By.XPath(emailName));
                 MainNavigationPanel navigationPanel = new MainNavigationPanel();
@@ -134,9 +146,13 @@ namespace TestWebProject.PageObject
                 RightClickAction.Build().Perform();
 
                 DeleteICon.Click();
+
+                Logger.Configure();
+                Log.Information($"Email from {sender} was deleted via right click'");
             }
             catch (Exception ex)
             {
+                Logger.Configure();
                 Log.Error(ex, "Email was not deleted via right click");
             }
 

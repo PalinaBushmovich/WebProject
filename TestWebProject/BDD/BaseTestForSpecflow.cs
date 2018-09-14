@@ -12,15 +12,12 @@ namespace TestWebProject.Driver
     [Binding]
     public class BaseTestForSpecflow
     {
-        public static Browser Browser = Browser.Instance;
-        // private static TestContext _testContext { get; set; }
-
+        protected static Browser _browser = Browser.Instance;
 
         [BeforeFeature]
         public static void SendEmailInitialize()
         {
-            // _testContext = testContext;
-            Browser = Browser.Instance;
+            _browser = Browser.Instance;
             Browser.WindowMaximize();
             Browser.NavigateTo(Configurations.StartUrl);
         }
@@ -28,16 +25,13 @@ namespace TestWebProject.Driver
         [AfterFeature]
         public static void CleanUp()
         {
-            //_testContext = ScenarioContext.Current.ScenarioContainer.Resolve<TestContext>();
-            //ScenarioContext.Current.ScenarioContainer.Resolve<TestContext>().Equals
-            if (ScenarioContext.Current.ScenarioContainer.Resolve<TestContext>().CurrentTestOutcome == UnitTestOutcome.Failed)
+            if (ScenarioContext.Current.ScenarioExecutionStatus == ScenarioExecutionStatus.TestError)
             {
                 string debugPath = Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory);
-                string filePath = Path.Combine(debugPath, ".png");
+                string filePath = Path.Combine(debugPath, ScenarioContext.Current.ScenarioInfo.Title + ".png");
                 Screenshot screenshot = ((ITakesScreenshot)Browser.GetDriver()).GetScreenshot();
                 screenshot.SaveAsFile(filePath, ScreenshotImageFormat.Png);
             }
-
             Browser.Quit();
         }
     }

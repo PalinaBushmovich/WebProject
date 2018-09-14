@@ -66,8 +66,8 @@ namespace TestWebProject
             Log.Information($"I sign out");
         }
 
-        [Then(@"the email to (.*) is present in Sent folder")]
-        public void ThenTheEmailIsPresentInSentFolder(string email)
+        [Then(@"I see that the email to (.*) is present in Sent folder")]
+        public void ThenISeeThatTheEmailIsPresentInSentFolder(string email)
         {
             string bodyXpath = "//*[contains(@email,'{0}')]/../..";
             string emailText = String.Format(bodyXpath, email);
@@ -79,7 +79,7 @@ namespace TestWebProject
             IWebElement toField = Browser.GetDriver().FindElement(By.XPath(emailText));
           
             bool isEmailInSentBox = toField.Displayed;
-            Assert.IsTrue(isEmailInSentBox, "Email was not sent and is not present in Sent Mail box");
+            Assert.IsTrue(isEmailInSentBox, $"Email '{email}' was not sent and is not present in Sent Mail box");
 
             Logger.Configure();
             Log.Information($"I check that email from '{email}' is present in the Sent folder." );
@@ -104,8 +104,8 @@ namespace TestWebProject
 
         }
 
-        [Then(@"Email with recipient (.*) is in Trash")]
-        public void EmailWithRecipientIsInTrash(string sender)
+        [Then(@"I see that email with recipient (.*) is in Trash")]
+        public void ThenISeeThatEmailWithRecipientIsInTrash(string sender)
         {
             MainNavigationPanel navigationPanel = new MainNavigationPanel();
             navigationPanel.TrashButton.Click();
@@ -117,7 +117,7 @@ namespace TestWebProject
             IWebElement emailTitle = Browser.GetDriver().FindElement(By.XPath(emailName));
 
             bool isEmailInTrash = trashPage.SenderName.Displayed;
-            Assert.IsTrue(isEmailInTrash, $"Email is not displayed in Trash");
+            Assert.IsTrue(isEmailInTrash, $"Email from '{sender}' is not displayed in Trash");
 
             Logger.Configure();
             Log.Information($"I check that email from '{sender}' is present in the trash.");
