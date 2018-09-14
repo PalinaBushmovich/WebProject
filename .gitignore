@@ -8,9 +8,6 @@
 *.user
 *.userosscache
 *.sln.docstates
-#Debug/
-#bin/
-#packages/
 Debug/
 bin/
 packages/
